@@ -1,0 +1,143 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="space-y-8">
+    <!-- Quick Actions Header -->
+    <div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Content Overview & Dashboard</h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Manage site copy, projects, resume versions, and inbound messages.</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="{% url 'admin:projects_quickaddproject_add' %}" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 shadow-sm transition-colors">
+                <span class="material-symbols-outlined text-base">add</span>
+                Quick Add Project
+            </a>
+            <a href="{% url 'admin:profiles_resumeversion_add' %}" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm transition-colors">
+                <span class="material-symbols-outlined text-base">upload_file</span>
+                Upload New Resume
+            </a>
+            <a href="/" target="_blank" class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 transition-colors">
+                <span class="material-symbols-outlined text-base">open_in_new</span>
+                View Live Site
+            </a>
+        </div>
+    </div>
+
+    <!-- Stat Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {% for card in stat_cards %}
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{{ card.title }}</p>
+            <p class="text-3xl font-extrabold text-gray-900 dark:text-gray-100 mt-2 mb-1">{{ card.metric }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{{ card.footer }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Content Health Checklist -->
+    <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-500">health_and_safety</span>
+                <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">Content Health Checklist</h2>
+            </div>
+            {% if content_health %}
+            <span class="px-2.5 py-1 text-xs font-semibold text-amber-800 bg-amber-100 dark:bg-amber-900/40 dark:text-amber-300 rounded-full">
+                {{ content_health|length }} items needing attention
+            </span>
+            {% else %}
+            <span class="px-2.5 py-1 text-xs font-semibold text-emerald-800 bg-emerald-100 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-full">
+                All health checks passing!
+            </span>
+            {% endif %}
+        </div>
+
+        {% if content_health %}
+        <div class="space-y-3">
+            {% for item in content_health %}
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-lg border border-gray-100 dark:border-gray-700/60 {% if item.severity == 'critical' %}bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900/40{% elif item.severity == 'warning' %}bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900/40{% else %}bg-gray-50 dark:bg-gray-700/30{% endif %}">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined mt-0.5 {% if item.severity == 'critical' %}text-red-500{% elif item.severity == 'warning' %}text-amber-500{% else %}text-blue-500{% endif %}">
+                        {% if item.severity == 'critical' %}error{% elif item.severity == 'warning' %}warning{% else %}info{% endif %}
+                    </span>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">{{ item.label }}</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{{ item.detail }}</p>
+                    </div>
+                </div>
+                <a href="{{ item.action_url }}" class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 hover:underline shrink-0">
+                    {{ item.action_label }}
+                    <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-sm text-gray-500 dark:text-gray-400">Everything looks great! Profile details, active resume, and published projects are complete.</p>
+        {% endif %}
+    </div>
+
+    <!-- Two-column: Recent Projects & Recent Inquiries -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Recent Projects -->
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Recently Updated Projects</h3>
+                <a href="{% url 'admin:projects_project_changelist' %}" class="text-xs text-primary-600 dark:text-primary-400 hover:underline">View all</a>
+            </div>
+            <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                {% for p in recent_projects %}
+                <div class="py-3 flex items-center justify-between">
+                    <div>
+                        <a href="{% url 'admin:projects_project_change' p.pk %}" class="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-primary-600 transition-colors">
+                            {{ p.title }}
+                        </a>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">{{ p.type }} · {{ p.status }}</p>
+                    </div>
+                    <div>
+                        {% if p.is_published %}
+                        <span class="px-2 py-0.5 text-xs font-medium text-emerald-700 bg-emerald-50 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-full">Published</span>
+                        {% else %}
+                        <span class="px-2 py-0.5 text-xs font-medium text-gray-600 bg-gray-100 dark:bg-gray-700 dark:text-gray-300 rounded-full">Draft</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <p class="py-4 text-sm text-gray-500">No projects added yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Recent Contact Messages -->
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Recent Inbound Messages</h3>
+                <a href="{% url 'admin:inbox_contactmessage_changelist' %}" class="text-xs text-primary-600 dark:text-primary-400 hover:underline">View inbox</a>
+            </div>
+            <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                {% for msg in recent_messages %}
+                <div class="py-3 flex items-start justify-between gap-3">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:inbox_contactmessage_change' msg.pk %}" class="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-primary-600 truncate">
+                                {{ msg.name }}
+                            </a>
+                            {% if not msg.is_read %}
+                            <span class="px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white bg-primary-600 rounded">New</span>
+                            {% endif %}
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 truncate">{{ msg.email }}</p>
+                        <p class="text-xs text-gray-600 dark:text-gray-300 mt-1 line-clamp-1 italic">"{{ msg.message }}"</p>
+                    </div>
+                    <span class="text-[11px] text-gray-400 shrink-0 font-mono">{{ msg.created_at|date:"M d, H:i" }}</span>
+                </div>
+                {% empty %}
+                <p class="py-4 text-sm text-gray-500">No contact messages received yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

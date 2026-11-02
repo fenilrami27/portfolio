@@ -1,0 +1,70 @@
+# ==============================================================================
+# Render.com Deployment Blueprint for Fenil Rami Portfolio
+# ==============================================================================
+services:
+  # Web Service: Django REST Framework API & Admin
+  - type: web
+    name: fenil-portfolio-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --no-input
+      python manage.py migrate
+    startCommand: gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 60
+    healthCheckPath: /api/v1/health/
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: .onrender.com,fenilrami.com,www.fenilrami.com
+      - key: ADMIN_URL
+        value: portal-admin/
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fenil-portfolio-db
+          property: connectionString
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://fenilrami.com,https://www.fenilrami.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://fenilrami.com,https://www.fenilrami.com
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: EMAIL_USE_TLS
+        value: "True"
+      - key: CONTACT_NOTIFICATION_EMAIL
+        value: fenilrami1266@gmail.com
+      - key: TURNSTILE_SECRET_KEY
+        sync: false
+      - key: ENABLE_API_DOCS
+        value: "False"
+      - key: SECURE_SSL_REDIRECT
+        value: "True"
+      - key: SESSION_COOKIE_SECURE
+        value: "True"
+      - key: CSRF_COOKIE_SECURE
+        value: "True"
+      - key: SECURE_HSTS_SECONDS
+        value: "31536000"
+
+databases:
+  # Managed PostgreSQL Database (Neon or Render Postgres)
+  - name: fenil-portfolio-db
+    region: oregon
+    plan: free
+    databaseName: portfolio
+    user: fenil

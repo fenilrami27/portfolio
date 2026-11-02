@@ -1,14 +1,14 @@
 {
-  "title": "CMHP – Pharmaceutical ERP System",
+  "title": "CMHP – Multi-Company Pharmaceutical ERP",
   "slug": "cmhp-pharma-erp",
-  "oneLiner": "A multi-company pharmaceutical ERP frontend supporting dual-entity production, digital batch manufacturing records (BMR), and automated inventory ledgers.",
-  "role": "Independent Frontend Developer",
+  "oneLiner": "Multi-company enterprise pharmaceutical ERP frontend supporting dual-entity production, digital Batch Manufacturing Records (BMR), and automated inventory ledgers.",
+  "role": "Frontend Developer (Independent)",
   "status": "In development (not yet handed over)",
   "type": "Frontend",
   "tier": "featured",
   "isFeatured": true,
   "isPublished": true,
-  "isEmployerProject": false,
+  "isEmployerProject": true,
   "startedOn": "2026-06-01",
   "endedOn": null,
   "githubUrl": "https://github.com/fenilrami27",
@@ -16,36 +16,81 @@
   "videoUrl": "",
   "note": "Built independently during internship at Vibe Tech Labs. Employer reference available.",
   "description": [
-    "Independently engineered the entire React frontend for an enterprise pharmaceutical ERP system supporting two manufacturing entities (CMHP Pharma and Tej Biocare) with a shared central raw material inventory.",
-    "Engineered comprehensive role-scoped workspaces covering HRMS, orders, stock ledgers, digital batch manufacturing records (BMR), quality assurance/control (QA/QC), and GST-compliant invoicing.",
-    "Focused on bulletproof client-side state reliability so factory operators can navigate multi-step manufacturing records without data loss on shop-floor tablets."
+    "Multi-company architecture: Architected three distinct workspaces covering two independent manufacturing entities and a shared Common Inventory depot. Engineered a workspace switcher that dynamically redirects authenticated users to their authorized company dashboard with strict per-company data isolation, where only customer records are shared across entities, backed by role-based access control so users see only their assigned company's data.",
+    "Common Inventory: Unified management for shared pharmaceutical products and raw materials with direct entry and high-volume CSV bulk import. Centralized order management streams orders originating from both companies with multi-criteria status filtering and delivery deadlines. Features a raw-material stock ledger with automated inward goods receipt note (GRN) generation and a granular Stocks & Lots view for finished goods showing company provenance.",
+    "End-to-end order flow: Engineered the complete business lifecycle from initial customer creation and order placement, through QA/QC testing and approval sign-off, digital production scheduling, finished goods packaging, dispatch tracking, and final GST sales invoice issuance.",
+    "Production module with digital BMR: Replaced error-prone paper logs with structured digital Batch Manufacturing Record (BMR) forms tailored for multiple pharmaceutical dosage forms (tablets, capsules, syrups), with browser print and PDF output matching the exact regulatory paper formats.",
+    "Invoicing module: Built a GST-compliant tax-invoice engine with real-time tax breakdown calculation, automated number-to-words currency formatting, live line-item editing, and print-ready dispatch billing.",
+    "HRMS module: Comprehensive personnel system managing users, employee profiles, daily attendance check-in/check-out, payroll processing, shift scheduling, and role-scoped operational dashboards.",
+    "Tech stack & engineering role: Built independently using React and Redux for centralized state management. Solved shop-floor tablet reliability and session isolation across two corporate entities sharing one physical inventory depot."
   ],
   "featureGroups": [
     {
-      "group": "Dual-Company Core & Inventory",
+      "group": "1. Multi-Company Architecture",
       "items": [
-        "Company-isolated workspaces for CMHP Pharma and Tej Biocare with shared raw-material depot.",
-        "Real-time stock ledger calculation showing batch-wise balances, reorder thresholds, and expiration flags.",
-        "Role-based permission gating for plant supervisors, storekeepers, and procurement teams."
+        "Three distinct workspaces: Company A, Company B, and central Common Inventory.",
+        "Dynamic workspace switcher redirecting seamlessly to company-specific dashboards.",
+        "Strict per-company data isolation: only customer directories are shared across companies.",
+        "Role-based access control (RBAC) guaranteeing users only view authorized company records."
       ]
     },
     {
-      "group": "Digital BMR & Compliance",
+      "group": "2. Common Inventory Depot",
       "items": [
-        "19-step digital Batch Manufacturing Record (BMR) workflow replacing error-prone paper logs.",
-        "Quality control (QC) sampling checkpoints with pass/fail sign-offs and lab test documentation.",
-        "Automated GST sales/purchase invoice generation with line-item tax calculation."
+        "Shared catalog for active pharmaceutical ingredients (APIs), excipients, and finished goods.",
+        "Add items individually or bulk import via structured CSV validation.",
+        "Aggregated order queue from both entities with stage filters and fulfillment deadlines.",
+        "Raw material stock ledger with automatic inward receipt (GRN) generation.",
+        "Stocks & Lots view detailing batch numbers, expiry dates, and manufacturing origin."
+      ]
+    },
+    {
+      "group": "3. End-to-End Order Flow",
+      "items": [
+        "Customer onboarding and order booking with price tiering.",
+        "Quality Assurance / Quality Control (QA/QC) checkpoint gating before production release.",
+        "Production batch assignment and shop-floor scheduling.",
+        "Packaging validation, dispatch verification, and automated invoice dispatch."
+      ]
+    },
+    {
+      "group": "4. Digital BMR (Batch Manufacturing Records)",
+      "items": [
+        "Digital BMR input forms customized for multiple dosage forms (solid oral, liquid, topical).",
+        "Stage-by-stage operator sign-offs, machine logs, and environmental monitoring.",
+        "Pixel-precise print and PDF generator reproducing statutory paper BMR compliance sheets."
+      ]
+    },
+    {
+      "group": "5. Invoicing & Taxation Engine",
+      "items": [
+        "GST-compliant tax-invoice format with automatic CGST, SGST, and IGST computation.",
+        "Real-time currency converter translating numerical invoice totals into words.",
+        "Interactive line-item adjustment and one-click thermal/A4 print templates."
+      ]
+    },
+    {
+      "group": "6. Integrated HRMS",
+      "items": [
+        "User role provisioning and linked employee record management.",
+        "Digital attendance tracking with punch-in/out logging and overtime calculation.",
+        "Shift scheduling, leave management, and monthly payroll calculation sheets.",
+        "Role-specific analytical dashboards for plant supervisors and HR officers."
       ]
     }
   ],
   "challenges": [
     {
-      "title": "Managing Complex Multi-Step Tablet BMR State",
-      "body": "Floor operators fill out dense 19-stage manufacturing records on shop-floor tablets prone to network drops. Solved by implementing centralized serialized Redux state slices with auto-save checkpoints to guarantee zero record loss."
+      "title": "Dual-Entity Multi-Tenant Ledger Isolation",
+      "body": "Operating two manufacturing corporations out of a single physical warehouse required rigorous tenant boundaries in Redux state slices and API request headers to prevent accidental inventory crossing while allowing shared customer accounts."
     },
     {
-      "title": "Dual-Entity Multi-Tenant Ledger Isolation",
-      "body": "Preventing cross-company inventory leaks while sharing a physical depot required strict tenant scoping at the state and API interceptor layer."
+      "title": "Shop-Floor Tablet Reliability for Dense BMR Workflows",
+      "body": "Operators on factory floors fill out extensive multi-step batch manufacturing records on tablets prone to Wi-Fi drops. Solved by architecting resilient local drafts, step-level validations, and immutable audit logs that prevent data loss."
+    },
+    {
+      "title": "Statutory Print Fidelity for BMR and Tax Invoices",
+      "body": "Regulatory pharmaceutical audits mandate that printed digital records mirror historical paper sheets. Engineered customized CSS print style sheets with exact A4 page breaks, tabular headers, and signature blocks."
     }
   ]
 }

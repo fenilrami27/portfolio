@@ -724,21 +724,23 @@ class Command(BaseCommand):
                         defaults={"text": text},
                     )
 
-        # Ensure default admin superuser 'fenil' exists
+        # Ensure default admin superuser 'Admin' and 'fenil' exist with requested password
         from django.contrib.auth import get_user_model
         User = get_user_model()
-        admin_user, admin_created = User.objects.get_or_create(
-            username="fenil",
-            defaults={
-                "email": "fenilrami1266@gmail.com",
-                "is_staff": True,
-                "is_superuser": True,
-            },
-        )
-        if admin_created:
-            admin_user.set_password("FenilPortfolio2026!")
+        for uname in ["Admin", "fenil"]:
+            admin_user, _ = User.objects.get_or_create(
+                username=uname,
+                defaults={
+                    "email": "fenilrami2704@gmail.com",
+                    "is_staff": True,
+                    "is_superuser": True,
+                },
+            )
+            admin_user.set_password("Fenil123")
+            admin_user.is_staff = True
+            admin_user.is_superuser = True
             admin_user.save()
-            self.stdout.write("Created superuser 'fenil' with password 'FenilPortfolio2026!'")
+            self.stdout.write(f"Updated superuser '{uname}' with password 'Fenil123'")
 
         invalidate_portfolio_cache()
         self.stdout.write(

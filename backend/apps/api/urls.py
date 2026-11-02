@@ -4,6 +4,33 @@ URL routing for /api/v1/ REST endpoints.
 
 from django.urls import path
 
+from apps.api.admin_views import (
+    AdminAchievementDetailView,
+    AdminAchievementsView,
+    AdminAuthChangePasswordView,
+    AdminAuthLoginView,
+    AdminAuthLogoutView,
+    AdminAuthMeView,
+    AdminCertificateDetailView,
+    AdminCertificatesView,
+    AdminDashboardStatsView,
+    AdminEducationDetailView,
+    AdminEducationView,
+    AdminExperienceDetailView,
+    AdminExperienceView,
+    AdminHackathonDetailView,
+    AdminLeadershipDetailView,
+    AdminLeadershipView,
+    AdminMessageDetailView,
+    AdminMessagesView,
+    AdminProfileView,
+    AdminProjectDetailView,
+    AdminProjectsView,
+    AdminResumeUploadView,
+    AdminSiteSettingsView,
+    AdminSkillDetailView,
+    AdminSkillsView,
+)
 from apps.api.views import (
     AchievementsListView,
     CertificatesListView,
@@ -24,6 +51,7 @@ from apps.api.views import (
 )
 
 urlpatterns = [
+    # Public endpoints
     path("portfolio/", PortfolioBundleView.as_view(), name="portfolio-bundle"),
     path("projects/", ProjectListView.as_view(), name="project-list"),
     path("projects/<slug:slug>/", ProjectDetailView.as_view(), name="project-detail"),
@@ -40,4 +68,82 @@ urlpatterns = [
     path("resume/", ResumeStreamView.as_view(), name="resume-stream"),
     path("contact/", ContactSubmitView.as_view(), name="contact-submit"),
     path("health/", HealthCheckView.as_view(), name="health-check"),
+    # Admin Back-Office Auth & Management Endpoints
+    path("admin/auth/login/", AdminAuthLoginView.as_view(), name="admin-auth-login"),
+    path("admin/auth/me/", AdminAuthMeView.as_view(), name="admin-auth-me"),
+    path("admin/auth/logout/", AdminAuthLogoutView.as_view(), name="admin-auth-logout"),
+    path(
+        "admin/auth/change-password/",
+        AdminAuthChangePasswordView.as_view(),
+        name="admin-auth-change-password",
+    ),
+    path(
+        "admin/dashboard/",
+        AdminDashboardStatsView.as_view(),
+        name="admin-dashboard-stats",
+    ),
+    path("admin/profile/", AdminProfileView.as_view(), name="admin-profile"),
+    path("admin/resume/", AdminResumeUploadView.as_view(), name="admin-resume-upload"),
+    path("admin/projects/", AdminProjectsView.as_view(), name="admin-projects"),
+    path(
+        "admin/projects/<str:pk>/",
+        AdminProjectDetailView.as_view(),
+        name="admin-project-detail",
+    ),
+    path("admin/skills/", AdminSkillsView.as_view(), name="admin-skills"),
+    path(
+        "admin/skills/<int:pk>/",
+        AdminSkillDetailView.as_view(),
+        name="admin-skill-detail",
+    ),
+    path("admin/experience/", AdminExperienceView.as_view(), name="admin-experience"),
+    path(
+        "admin/experience/<int:pk>/",
+        AdminExperienceDetailView.as_view(),
+        name="admin-experience-detail",
+    ),
+    path("admin/education/", AdminEducationView.as_view(), name="admin-education"),
+    path(
+        "admin/education/<int:pk>/",
+        AdminEducationDetailView.as_view(),
+        name="admin-education-detail",
+    ),
+    path(
+        "admin/certificates/",
+        AdminCertificatesView.as_view(),
+        name="admin-certificates",
+    ),
+    path(
+        "admin/certificates/<int:pk>/",
+        AdminCertificateDetailView.as_view(),
+        name="admin-certificate-detail",
+    ),
+    path(
+        "admin/achievements/",
+        AdminAchievementsView.as_view(),
+        name="admin-achievements",
+    ),
+    path(
+        "admin/achievements/<int:pk>/",
+        AdminAchievementDetailView.as_view(),
+        name="admin-achievement-detail",
+    ),
+    path(
+        "admin/hackathons/<int:pk>/",
+        AdminHackathonDetailView.as_view(),
+        name="admin-hackathon-detail",
+    ),
+    path("admin/leadership/", AdminLeadershipView.as_view(), name="admin-leadership"),
+    path(
+        "admin/leadership/<int:pk>/",
+        AdminLeadershipDetailView.as_view(),
+        name="admin-leadership-detail",
+    ),
+    path("admin/messages/", AdminMessagesView.as_view(), name="admin-messages"),
+    path(
+        "admin/messages/<int:pk>/",
+        AdminMessageDetailView.as_view(),
+        name="admin-message-detail",
+    ),
+    path("admin/settings/", AdminSiteSettingsView.as_view(), name="admin-settings"),
 ]

@@ -1,7 +1,7 @@
 {
-  "title": "HR University – University Website & Portal",
+  "title": "HR University – Academic Portal & Management System",
   "slug": "hr-university",
-  "oneLiner": "An interactive university web portal and modular Django 5 REST backend managing academic departments, admission workflows, and campus events.",
+  "oneLiner": "Comprehensive university web portal with interactive admissions workflows and modular Django 5 REST backend managing academic departments and events.",
   "role": "Full Stack Developer (Frontend + Backend)",
   "status": "In progress",
   "type": "Full Stack",
@@ -16,36 +16,60 @@
   "videoUrl": "",
   "note": "Frontend developed with interactive animations; Django 5 modular backend in active development.",
   "description": [
-    "Architecting and building a modern institutional web portal for university admissions, department directories, campus events, and student enquiry management.",
-    "Engineered the frontend experience with an animated introductory sequence, live institutional statistics counters, hero video integration, and responsive modal enquiry workflows.",
-    "Constructed the backend in Django 5 with Django REST Framework, cleanly structured into 11 decoupled apps, 32 relational models, and 38 REST endpoints."
+    "Tech stack and architecture: Architecting a decoupled institutional web system pairing an interactive React frontend with a planned, ongoing Django 5, Django REST Framework, and PostgreSQL backend. The API architecture is designed for prospective student 'Apply Now' submissions with dynamic course filters, admin-managed academic courses, campus event announcements, multimedia galleries, and internal administrative notes on admissions submissions.",
+    "Engineering highlights: Built a high-performance frontend featuring an animated introductory entrance sequence, smooth live statistical counters animating on viewport intersection, a timed admission enquiry popup with smart session dismissal, fully responsive layout across desktop and mobile, and hardware-accelerated animations ensuring smooth 60fps interaction.",
+    "Admin dashboard capabilities: The backend administration interface empowers university staff to review admissions leads, attach internal evaluation notes to candidate submissions, filter applicants by chosen discipline, publish and archive course catalogs, update event calendars, and curate gallery photo collections.",
+    "Institutional content sections: Encapsulates dedicated modules for Campus Life, Academic Departments, University Events, Career Placements, and Campus News.",
+    "Implementation status: The React frontend, user interface animations, responsive components, and client-side enquiry workflows are 100% complete; the Django 5 REST backend, PostgreSQL relational schema, and administrative API endpoints are currently in active development."
   ],
   "featureGroups": [
     {
-      "group": "Interactive Portal Frontend",
+      "group": "1. Tech Stack & Architecture",
       "items": [
-        "Animated page transitions and live institutional statistics counter displays.",
-        "Interactive admissions enquiry popup with client-side field validation.",
-        "Mobile-first navigation across faculties, research centers, and campus event feeds."
+        "React frontend coupled to an ongoing Django 5, DRF, and PostgreSQL relational backend.",
+        "REST API design for prospective student 'Apply Now' applications with course filters.",
+        "Administrative lead review system allowing staff to attach evaluation notes to submissions.",
+        "Centralized management for course offerings, campus announcements, and photo galleries."
       ]
     },
     {
-      "group": "Decoupled Django 5 Backend",
+      "group": "2. Engineering Highlights & UI",
       "items": [
-        "11 decoupled Django applications isolating admissions, faculty, placements, and news.",
-        "38 RESTful API endpoints with structured serializers and OpenAPI documentation.",
-        "Comprehensive Django admin permission scoping for non-technical administrative staff."
+        "Engaging intro animation sequence setting an elevated institutional tone on first visit.",
+        "Live statistics counters (students, faculties, placements) animating upon viewport scroll.",
+        "Timed admissions enquiry popup with client-side validation and session dismissal caching.",
+        "Fully responsive fluid grid ensuring seamless usability on mobile, tablet, and widescreen monitors.",
+        "Optimized asset loading and CSS transitions maintaining strong performance scores."
+      ]
+    },
+    {
+      "group": "3. Admin Dashboard Capabilities",
+      "items": [
+        "Admissions lead processing queue with applicant status filtering and internal review notes.",
+        "Course catalog editor managing curriculum details, intake capacity, and eligibility criteria.",
+        "Campus events calendar scheduler with upcoming and archived event states.",
+        "Media gallery asset manager organizing campus photographs and press materials."
+      ]
+    },
+    {
+      "group": "4. Institutional Content Sections",
+      "items": [
+        "Campus Life: Student clubs, hostel amenities, sports complexes, and student welfare.",
+        "Academic Departments: Engineering, management, humanities, and research centers.",
+        "University Events: Symposia, cultural festivals, conferences, and academic workshops.",
+        "Career Placements: Recruitment statistics, corporate partners, and alumni trajectories.",
+        "Campus News: Official notices, press bulletins, and administrative announcements."
       ]
     }
   ],
   "challenges": [
     {
-      "title": "Decoupled Relational Schema for 11 University Domains",
-      "body": "Orchestrating admissions, courses, faculty, and events without circular foreign key dependencies. Solved using clean domain-driven application boundaries and abstract base models."
+      "title": "Decoupled Relational Schema for 11 Academic Domains",
+      "body": "Modeling departments, faculty directories, course pre-requisites, admissions, and campus events without circular foreign key dependencies. Solved using clean domain-driven application boundaries in Django 5 with modular apps."
     },
     {
-      "title": "Maintaining High Core Web Vitals with Rich Media",
-      "body": "Optimized animated introductory sequences and video media with lazy rendering and hardware-accelerated CSS transforms to guarantee sub-2.5s LCP."
+      "title": "Rich Motion Performance on Mobile Devices",
+      "body": "Maintaining 60fps fluid scrolling while running entrance animations, intersecting stat counters, and modal enquiry dialogs. Solved using CSS hardware-accelerated transforms and lightweight observer hooks."
     }
   ]
 }

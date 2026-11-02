@@ -41,6 +41,8 @@ export default [
         AbortController: 'readonly',
         sessionStorage: 'readonly',
         process: 'readonly',
+        FormData: 'readonly',
+        URL: 'readonly',
       },
     },
     rules: {

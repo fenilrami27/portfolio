@@ -118,6 +118,11 @@ export function Footer() {
                   Resume
                 </Link>
               </li>
+              <li>
+                <Link to="/admin" className="hover:text-accent-1 dark:hover:text-accent-2 transition-colors font-mono text-xs">
+                  Admin Portal &rarr;
+                </Link>
+              </li>
             </ul>
           </div>
 

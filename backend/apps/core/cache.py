@@ -48,3 +48,7 @@ def invalidate_portfolio_cache():
         logger.info("Portfolio cache invalidated successfully.")
     except Exception as exc:
         logger.warning("Error while invalidating portfolio cache: %s", exc)
+
+
+clear_portfolio_cache = invalidate_portfolio_cache
+

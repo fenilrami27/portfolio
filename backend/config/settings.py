@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-party extensions
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
     "axes",
@@ -205,6 +206,10 @@ CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
 
 # Django REST Framework
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
     "DEFAULT_RENDERER_CLASSES": [
         "djangorestframework_camel_case.render.CamelCaseJSONRenderer",
         "djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer",

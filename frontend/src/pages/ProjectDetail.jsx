@@ -268,7 +268,12 @@ export default function ProjectDetail() {
             <div>
               <h2 className="text-2xl font-bold text-text mb-6">System overview</h2>
               <div className="space-y-4 text-base text-text-muted leading-relaxed">
-                {project.description?.map((p, idx) => (
+                {(Array.isArray(project.description)
+                  ? project.description
+                  : typeof project.description === 'string'
+                  ? project.description.split('\n\n').filter(Boolean)
+                  : []
+                ).map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
               </div>

@@ -1,0 +1,62 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 15mm 12mm 15mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide navigation, header, footer, action bars, toasts, scroll indicators */
+  header,
+  footer,
+  nav,
+  .no-print,
+  #scroll-progress,
+  #back-to-top {
+    display: none !important;
+  }
+
+  /* Reset layout containers */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .resume-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure high contrast and sharp text */
+  * {
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #111827 !important;
+  }
+
+  /* Prevent page breaks inside cards / items */
+  .resume-section-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

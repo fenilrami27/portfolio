@@ -381,6 +381,7 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
     feature_groups = serializers.SerializerMethodField()
     gallery = serializers.SerializerMethodField()
     challenges = serializers.SerializerMethodField()
+    note = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
@@ -402,6 +403,7 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
             "gallery",
             "feature_groups",
             "challenges",
+            "note",
             "is_featured",
             "is_published",
             "order",
@@ -435,6 +437,14 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
     @extend_schema_field(ProjectChallengeSerializer(many=True))
     def get_challenges(self, obj):
         return ProjectChallengeSerializer(obj.challenges.all(), many=True).data
+
+    @extend_schema_field(OpenApiTypes.STR)
+    def get_note(self, obj):
+        if obj.is_employer_project:
+            return "Built independently during internship at Vibe Tech Labs. Employer reference available."
+        if "replica" in (obj.one_liner or "").lower() or "sample" in (obj.one_liner or "").lower():
+            return "Built during my internship as a learning replica of a company website; all images and logos are sample data."
+        return ""
 
 
 class ContactSubmissionSerializer(serializers.Serializer):

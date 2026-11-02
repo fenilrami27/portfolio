@@ -38,6 +38,7 @@ export function ProjectCard({ project, tier = 'featured' }) {
           <ProjectCover
             slug={project.slug}
             title={project.title}
+            cover={project.cover}
             height={isCompact ? 'h-36 sm:h-40' : 'h-48 sm:h-56'}
           />
         </Link>

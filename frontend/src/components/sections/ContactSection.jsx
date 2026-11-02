@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa6'
 import { LuMail, LuSend, LuFileDown, LuCircleCheck, LuCircleAlert } from 'react-icons/lu'
@@ -7,7 +7,9 @@ import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
 import { useContactMutation } from '../../hooks/usePortfolio'
 
-export function ContactSection({ profile }) {
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || ''
+
+export function ContactSection({ profile = {}, settings = {} }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,10 +17,68 @@ export function ContactSection({ profile }) {
     website_hp: '', // Honeypot
   })
 
+  const [turnstileToken, setTurnstileToken] = useState('')
   const [errors, setErrors] = useState({})
   const [statusMessage, setStatusMessage] = useState(null)
+  const turnstileContainerRef = useRef(null)
+  const turnstileWidgetIdRef = useRef(null)
 
   const mutation = useContactMutation()
+
+  // Load and initialize Cloudflare Turnstile if site key is configured
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return
+
+    let isMounted = true
+
+    const initTurnstile = () => {
+      if (window.turnstile && turnstileContainerRef.current && turnstileWidgetIdRef.current === null) {
+        try {
+          turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            callback: (token) => {
+              if (isMounted) setTurnstileToken(token)
+            },
+            'expired-callback': () => {
+              if (isMounted) setTurnstileToken('')
+            },
+            'error-callback': () => {
+              if (isMounted) setTurnstileToken('')
+            },
+            theme: 'auto',
+          })
+        } catch {
+          // Silent fallback if render fails
+        }
+      }
+    }
+
+    if (window.turnstile) {
+      initTurnstile()
+    } else {
+      const existingScript = document.querySelector('script[src*="turnstile"]')
+      if (!existingScript) {
+        const script = document.createElement('script')
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
+        script.async = true
+        script.defer = true
+        script.onload = initTurnstile
+        document.head.appendChild(script)
+      }
+    }
+
+    return () => {
+      isMounted = false
+      if (window.turnstile && turnstileWidgetIdRef.current !== null) {
+        try {
+          window.turnstile.remove(turnstileWidgetIdRef.current)
+        } catch {
+          // ignore
+        }
+        turnstileWidgetIdRef.current = null
+      }
+    }
+  }, [])
 
   const validate = () => {
     const newErrors = {}
@@ -60,9 +120,22 @@ export function ContactSection({ profile }) {
     }
 
     try {
-      const res = await mutation.mutateAsync(formData)
+      const payload = {
+        ...formData,
+        turnstile_token: turnstileToken,
+        turnstileToken: turnstileToken,
+      }
+      const res = await mutation.mutateAsync(payload)
       setStatusMessage({ type: 'success', text: res.message || 'Message sent successfully!' })
       setFormData({ name: '', email: '', message: '', website_hp: '' })
+      setTurnstileToken('')
+      if (window.turnstile && turnstileWidgetIdRef.current !== null) {
+        try {
+          window.turnstile.reset(turnstileWidgetIdRef.current)
+        } catch {
+          // ignore
+        }
+      }
       setErrors({})
     } catch (err) {
       setStatusMessage({
@@ -72,12 +145,17 @@ export function ContactSection({ profile }) {
     }
   }
 
+  const heading = settings?.contactHeading || "Let's build something reliable."
+  const description =
+    settings?.contactText ||
+    'Open to Python Backend and Full Stack roles. The fastest way to reach me is email or LinkedIn.'
+
   return (
     <Section
       id="contact"
       eyebrow="Get In Touch"
-      title="Let's build something reliable."
-      description="Open to Python Backend and Full Stack roles. The fastest way to reach me is email or LinkedIn."
+      title={heading}
+      description={description}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Direct channels & Quick Action */}
@@ -281,6 +359,13 @@ export function ContactSection({ profile }) {
                   </p>
                 )}
               </div>
+
+              {/* Turnstile Widget (rendered when TURNSTILE_SITE_KEY is configured) */}
+              {TURNSTILE_SITE_KEY && (
+                <div className="pt-2">
+                  <div ref={turnstileContainerRef} className="cf-turnstile min-h-[65px]" />
+                </div>
+              )}
 
               {/* Submit CTA */}
               <div className="pt-2">

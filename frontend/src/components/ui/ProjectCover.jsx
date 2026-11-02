@@ -17,7 +17,29 @@ const ICONS_BY_SLUG = {
   vtl: SiPython,
 }
 
-export function ProjectCover({ slug, title, className = '', height = 'h-48 sm:h-56' }) {
+export function ProjectCover({ slug, title, cover, className = '', height = 'h-48 sm:h-56' }) {
+  const coverUrl = typeof cover === 'object' && cover !== null ? cover.url : cover
+
+  if (coverUrl) {
+    return (
+      <div
+        className={clsx(
+          'relative w-full overflow-hidden bg-surface-2 border-b border-border/80',
+          height,
+          className
+        )}
+        aria-label={`Visual cover graphic for ${title}`}
+      >
+        <img
+          src={coverUrl}
+          alt={title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    )
+  }
+
   const gradient =
     GRADIENTS_BY_SLUG[slug] || 'from-indigo-950/40 via-slate-900/30 to-surface-2'
   const IconComponent = ICONS_BY_SLUG[slug] || LuLayoutGrid

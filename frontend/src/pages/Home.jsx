@@ -8,9 +8,13 @@ import {
   useEducation,
   useLeadership,
   useCertificates,
+  useHackathons,
   useAchievements,
   useTestimonials,
   useSettings,
+  useFocusAreas,
+  useStats,
+  useJourney,
 } from '../hooks/usePortfolio'
 import { HeroSection } from '../components/sections/HeroSection'
 import { OverviewSection } from '../components/sections/OverviewSection'
@@ -36,11 +40,15 @@ export default function Home() {
   const { data: education = [] } = useEducation()
   const { data: leadership = [] } = useLeadership()
   const { data: certificates = [] } = useCertificates()
+  const { data: hackathons = [] } = useHackathons()
   const { data: achievements = [] } = useAchievements()
   const { data: testimonials = [] } = useTestimonials()
   const { data: settings } = useSettings()
+  const { data: focusAreas = [] } = useFocusAreas()
+  const { data: stats = [] } = useStats()
+  const { data: journey = [] } = useJourney()
 
-  if (isProfileLoading || isProjectsLoading || isSkillsLoading) {
+  if (!profile && (isProfileLoading || isProjectsLoading || isSkillsLoading)) {
     return (
       <Container className="py-24 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -75,7 +83,13 @@ export default function Home() {
       <HeroSection profile={profile} />
 
       {/* 2. Overview */}
-      <OverviewSection profile={profile} projects={projects} settings={settings} />
+      <OverviewSection
+        profile={profile}
+        projects={projects}
+        settings={settings}
+        focusAreas={focusAreas}
+        stats={stats}
+      />
 
       {/* 3. Featured Work */}
       <FeaturedWorkSection projects={projects} />
@@ -84,19 +98,19 @@ export default function Home() {
       <SkillsSection skills={skills} />
 
       {/* 5. Journey */}
-      <JourneySection experience={experience} education={education} />
+      <JourneySection experience={experience} education={education} journey={journey} />
 
       {/* 6. Leadership */}
       <LeadershipSection leadership={leadership} />
 
       {/* 7. Hidden when empty sections */}
       <CertificatesSection certificates={certificates} />
-      <HackathonsSection hackathons={[]} />
+      <HackathonsSection hackathons={hackathons} />
       <AchievementsSection achievements={achievements} />
       <TestimonialsSection testimonials={testimonials} />
 
       {/* 8. Contact */}
-      <ContactSection profile={profile} />
+      <ContactSection profile={profile} settings={settings} />
     </>
   )
 }

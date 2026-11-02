@@ -17,9 +17,11 @@ export function CertificatesSection({ certificates = [] }) {
         {certificates.map((cert, idx) => (
           <Card key={idx} className="p-6 bg-surface/90">
             <LuAward className="w-8 h-8 text-accent-1 dark:text-accent-2 mb-4" />
-            <h3 className="font-heading font-semibold text-lg text-text mb-1">{cert.name}</h3>
+            <h3 className="font-heading font-semibold text-lg text-text mb-1">{cert.title || cert.name}</h3>
             <p className="text-sm text-text-muted">{cert.issuer}</p>
-            {cert.date && <p className="text-xs font-mono text-text-subtle mt-2">{cert.date}</p>}
+            {(cert.issuedOn || cert.date) && (
+              <p className="text-xs font-mono text-text-subtle mt-2">{cert.issuedOn || cert.date}</p>
+            )}
           </Card>
         ))}
       </div>
@@ -41,7 +43,7 @@ export function HackathonsSection({ hackathons = [] }) {
         {hackathons.map((h, idx) => (
           <Card key={idx} className="p-6 bg-surface/90">
             <LuTrophy className="w-8 h-8 text-accent-1 dark:text-accent-2 mb-4" />
-            <h3 className="font-heading font-semibold text-lg text-text mb-1">{h.name}</h3>
+            <h3 className="font-heading font-semibold text-lg text-text mb-1">{h.event || h.name}</h3>
             <p className="text-sm text-text-muted">{h.description}</p>
           </Card>
         ))}

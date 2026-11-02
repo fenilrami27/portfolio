@@ -4,121 +4,182 @@ import { Section } from '../ui/Section'
 import { Card } from '../ui/Card'
 import { Badge } from '../ui/Badge'
 
-export function JourneySection({ experience = [], education = [] }) {
+export function JourneySection({ experience = [], education = [], journey = [] }) {
   const edu = education[0] || {}
   const exp = experience[0] || {}
 
-  const timelineItems = [
-    {
-      period: '2023 - 2027',
-      type: 'Education',
-      title: edu.degree || 'Bachelor of Information Technology',
-      organization: edu.institution || 'Gandhinagar University',
-      icon: <LuGraduationCap className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
-      badge: <Badge variant="accent">Academic Foundation</Badge>,
-      content: (
-        <div className="space-y-2 text-sm text-text-muted">
-          <p>
-            Enrolled in Bachelor of Information Technology, establishing fundamental knowledge
-            in software engineering, data structures, algorithms, and database management.
-          </p>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-2 border border-border text-xs font-mono font-semibold text-text">
-            <span>{edu.grade || 'Latest SGPA: 8.77 / 10 (Semester 6)'}</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      period: 'Project Milestone',
-      type: 'Project',
-      title: 'Interior Design Studio',
-      organization: 'Learning Project (Django)',
-      icon: <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
-      badge: <Badge variant="default">Django Project</Badge>,
-      content: (
-        <div className="text-sm text-text-muted space-y-2">
-          <p>
-            Developed a Django website with product and project showcase pages, user
-            authentication, session handling, OTP-verified password recovery, and an
-            admin-managed dynamic gallery.
-          </p>
-          <p className="text-xs text-text-subtle italic">
-            Built as a learning replica of a commercial website with sample data.
-          </p>
-        </div>
-      ),
-    },
-    {
-      period: `${exp.start || 'Jun 2026'} - ${exp.end || 'Present'}`,
-      type: 'Experience',
-      title: exp.role || 'Python Developer Intern',
-      organization: exp.company || 'Vibe Tech Labs',
-      location: exp.location || 'Ahmedabad',
-      icon: <LuBriefcase className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
-      badge: <Badge variant="success" showDot={true}>Active Internship</Badge>,
-      content: (
-        <div className="text-sm text-text-muted space-y-3">
-          <ul className="space-y-2 list-disc list-outside pl-4 marker:text-accent-1 dark:marker:text-accent-2">
-            {exp.bullets?.map((bullet, idx) => (
-              <li key={idx} className="leading-relaxed">
-                {bullet}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ),
-    },
-    {
-      period: 'Project Milestone',
-      type: 'Project',
-      title: 'CMHP Pharma ERP Frontend',
-      organization: 'Independent Build · Vibe Tech Labs',
-      icon: <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
-      badge: <Badge variant="accent">Enterprise Frontend</Badge>,
-      content: (
-        <div className="text-sm text-text-muted space-y-2">
-          <p>
-            Independently built the entire React frontend for a two-company pharmaceutical ERP
-            (CMHP Pharma &amp; Tej Biocare), spanning workspaces, HRMS, multi-role orders, stock
-            ledgers, BMR digital batch manufacturing records, QC/QA, and GST invoicing.
-          </p>
-        </div>
-      ),
-    },
-    {
-      period: 'Project Milestone',
-      type: 'Project',
-      title: 'HR University Portal',
-      organization: 'University Platform',
-      icon: <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
-      badge: <Badge variant="warning">In Progress</Badge>,
-      content: (
-        <div className="text-sm text-text-muted space-y-2">
-          <p>
-            Constructed the interactive frontend with an animated intro, live counters, event
-            directories, placement metrics, and admission workflows.
-          </p>
-        </div>
-      ),
-    },
-    {
-      period: 'Now',
-      type: 'Milestone',
-      title: 'HR University Django Backend',
-      organization: 'Django 5 · DRF · PostgreSQL',
-      icon: <LuRocket className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
-      badge: <Badge variant="warning" showDot={true}>Active Development</Badge>,
-      content: (
-        <div className="text-sm text-text-muted space-y-2">
-          <p>
-            Architecting and implementing the Django 5 backend with Django REST Framework and
-            PostgreSQL: 11 decoupled apps, 32 models, and 38 REST API endpoints for complete
-            university data management.
-          </p>
-        </div>
-      ),
-    },
-  ]
+  const timelineItems =
+    journey && journey.length > 0
+      ? journey.map((item) => {
+          let icon = <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />
+          let badge = <Badge variant="default">Project</Badge>
+          let org = ''
+
+          if (item.kind === 'education') {
+            icon = <LuGraduationCap className="w-5 h-5 text-accent-1 dark:text-accent-2" />
+            badge = <Badge variant="accent">Academic Foundation</Badge>
+            org = edu.institution || 'Gandhinagar University'
+          } else if (item.kind === 'experience') {
+            icon = <LuBriefcase className="w-5 h-5 text-accent-1 dark:text-accent-2" />
+            badge = <Badge variant="success" showDot={true}>Active Internship</Badge>
+            org = exp.company || 'Vibe Tech Labs'
+          } else if (item.kind === 'milestone') {
+            icon = <LuRocket className="w-5 h-5 text-accent-1 dark:text-accent-2" />
+            badge = <Badge variant="warning" showDot={true}>Active Development</Badge>
+            org = 'Django 5 · DRF · PostgreSQL'
+          } else if (item.title?.includes('Interior')) {
+            badge = <Badge variant="default">Django Project</Badge>
+            org = 'Learning Project (Django)'
+          } else if (item.title?.includes('CMHP')) {
+            badge = <Badge variant="accent">Enterprise Frontend</Badge>
+            org = 'Independent Build · Vibe Tech Labs'
+          } else if (item.title?.includes('HR University Portal')) {
+            badge = <Badge variant="warning">In Progress</Badge>
+            org = 'University Platform'
+          } else if (item.title?.includes('HR University Django')) {
+            badge = <Badge variant="warning" showDot={true}>Active Development</Badge>
+            org = 'Django 5 · DRF · PostgreSQL'
+          }
+
+          return {
+            period: item.dateLabel || item.date_label || '',
+            title: item.title,
+            organization: org,
+            location: item.kind === 'experience' ? exp.location : '',
+            icon,
+            badge,
+            content: (
+              <div className="space-y-2 text-sm text-text-muted">
+                <p>{item.description}</p>
+                {item.kind === 'education' && (
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-2 border border-border text-xs font-mono font-semibold text-text">
+                    <span>{edu.grade || 'Latest SGPA: 8.77 / 10 (Semester 6)'}</span>
+                  </div>
+                )}
+                {item.kind === 'experience' && exp.bullets && (
+                  <ul className="space-y-2 list-disc list-outside pl-4 marker:text-accent-1 dark:marker:text-accent-2 pt-1">
+                    {exp.bullets.map((bullet, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ),
+          }
+        })
+      : [
+          {
+            period: '2023 - 2027',
+            type: 'Education',
+            title: edu.degree || 'Bachelor of Information Technology',
+            organization: edu.institution || 'Gandhinagar University',
+            icon: <LuGraduationCap className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
+            badge: <Badge variant="accent">Academic Foundation</Badge>,
+            content: (
+              <div className="space-y-2 text-sm text-text-muted">
+                <p>
+                  Enrolled in Bachelor of Information Technology, establishing fundamental knowledge
+                  in software engineering, data structures, algorithms, and database management.
+                </p>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-2 border border-border text-xs font-mono font-semibold text-text">
+                  <span>{edu.grade || 'Latest SGPA: 8.77 / 10 (Semester 6)'}</span>
+                </div>
+              </div>
+            ),
+          },
+          {
+            period: 'Project Milestone',
+            type: 'Project',
+            title: 'Interior Design Studio',
+            organization: 'Learning Project (Django)',
+            icon: <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
+            badge: <Badge variant="default">Django Project</Badge>,
+            content: (
+              <div className="text-sm text-text-muted space-y-2">
+                <p>
+                  Developed a Django website with product and project showcase pages, user
+                  authentication, session handling, OTP-verified password recovery, and an
+                  admin-managed dynamic gallery.
+                </p>
+                <p className="text-xs text-text-subtle italic">
+                  Built as a learning replica of a commercial website with sample data.
+                </p>
+              </div>
+            ),
+          },
+          {
+            period: `${exp.start || 'Jun 2026'} - ${exp.end || 'Present'}`,
+            type: 'Experience',
+            title: exp.role || 'Python Developer Intern',
+            organization: exp.company || 'Vibe Tech Labs',
+            location: exp.location || 'Ahmedabad',
+            icon: <LuBriefcase className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
+            badge: <Badge variant="success" showDot={true}>Active Internship</Badge>,
+            content: (
+              <div className="text-sm text-text-muted space-y-3">
+                <ul className="space-y-2 list-disc list-outside pl-4 marker:text-accent-1 dark:marker:text-accent-2">
+                  {exp.bullets?.map((bullet, idx) => (
+                    <li key={idx} className="leading-relaxed">
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ),
+          },
+          {
+            period: 'Project Milestone',
+            type: 'Project',
+            title: 'CMHP Pharma ERP Frontend',
+            organization: 'Independent Build · Vibe Tech Labs',
+            icon: <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
+            badge: <Badge variant="accent">Enterprise Frontend</Badge>,
+            content: (
+              <div className="text-sm text-text-muted space-y-2">
+                <p>
+                  Independently built the entire React frontend for a two-company pharmaceutical ERP
+                  (CMHP Pharma &amp; Tej Biocare), spanning workspaces, HRMS, multi-role orders, stock
+                  ledgers, BMR digital batch manufacturing records, QC/QA, and GST invoicing.
+                </p>
+              </div>
+            ),
+          },
+          {
+            period: 'Project Milestone',
+            type: 'Project',
+            title: 'HR University Portal',
+            organization: 'University Platform',
+            icon: <LuCode className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
+            badge: <Badge variant="warning">In Progress</Badge>,
+            content: (
+              <div className="text-sm text-text-muted space-y-2">
+                <p>
+                  Constructed the interactive frontend with an animated intro, live counters, event
+                  directories, placement metrics, and admission workflows.
+                </p>
+              </div>
+            ),
+          },
+          {
+            period: 'Now',
+            type: 'Milestone',
+            title: 'HR University Django Backend',
+            organization: 'Django 5 · DRF · PostgreSQL',
+            icon: <LuRocket className="w-5 h-5 text-accent-1 dark:text-accent-2" />,
+            badge: <Badge variant="warning" showDot={true}>Active Development</Badge>,
+            content: (
+              <div className="text-sm text-text-muted space-y-2">
+                <p>
+                  Architecting and implementing the Django 5 backend with Django REST Framework and
+                  PostgreSQL: 11 decoupled apps, 32 models, and 38 REST API endpoints for complete
+                  university data management.
+                </p>
+              </div>
+            ),
+          },
+        ]
 
   return (
     <Section

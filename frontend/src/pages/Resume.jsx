@@ -70,7 +70,7 @@ export default function Resume() {
             </Button>
 
             <Button
-              href={profile?.resumeUrl || '/Fenil_Rami_Resume.pdf'}
+              href={profile?.resumeUrl || '/api/v1/resume/'}
               download="Fenil_Rami_Resume.pdf"
               variant="primary"
               size="sm"

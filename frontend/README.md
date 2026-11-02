@@ -134,13 +134,37 @@ All profile information, project details, skills, and work history live in `src/
 
 ---
 
-## 🔌 How Part 2 (Django Backend) Will Plug In
+## 🔌 Part 2 (Django Backend) Integration
 
-1. The data layer is completely decoupled in `src/services/portfolioService.js`.
-2. In Part 2, when the Django REST API is live:
-   - Configure `.env` with:
-     ```env
-     VITE_API_BASE_URL=http://localhost:8000
-     ```
-   - Swap the local return statements in `src/services/portfolioService.js` to `fetch()` calls against the Django endpoints.
-   - The UI components and TanStack Query hooks will automatically consume the backend without needing any template refactoring.
+The frontend is fully connected to the Django REST API backend (`Portfolio/backend`) built in Part 2.
+
+### Local Development Setup
+1. **Start the Django Backend** (runs on port 8000):
+   ```bash
+   cd Portfolio/backend
+   # Activate venv (.venv\Scripts\activate on Windows)
+   python manage.py runserver 8000
+   ```
+2. **Start the Vite Frontend** (runs on port 5173):
+   ```bash
+   cd Portfolio/frontend
+   npm run dev
+   ```
+   Vite's development server automatically proxies `/api` and `/media` requests to `http://127.0.0.1:8000`.
+
+### Cold-Start Resilience & Fallback Data
+- **No White Screens:** If the backend is spinning up or unavailable, TanStack Query immediately renders data from `src/data/fallback.json` as placeholder data without flickering.
+- **Exporting Fallback Data:** Run `python manage.py export_fallback` from `Portfolio/backend/` whenever the database is seeded or updated to keep `fallback.json` up to date.
+
+### Environment Configuration (.env)
+Copy `.env.example` to `.env` to customize settings:
+```env
+# Backend API Base URL (leave blank for local Vite proxy to port 8000)
+VITE_API_BASE_URL=
+
+# Standalone Local Mode Toggle (set 'true' to bypass network requests entirely)
+VITE_USE_LOCAL_DATA=false
+
+# Cloudflare Turnstile Site Key (optional; empty skips verification locally)
+VITE_TURNSTILE_SITE_KEY=
+```

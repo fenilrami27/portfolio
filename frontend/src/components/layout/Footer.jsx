@@ -6,13 +6,31 @@ import { FaLinkedin } from 'react-icons/fa6'
 import { LuMail } from 'react-icons/lu'
 import { Container } from '../ui/Container'
 import { IconButton } from '../ui/IconButton'
+import { useProfile, useSettings } from '../../hooks/usePortfolio'
 
 export function Footer() {
+  const { data: profile } = useProfile()
+  const { data: settings } = useSettings()
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const currentYear = new Date().getFullYear()
+
+  const email = profile?.email || 'fenilrami1266@gmail.com'
+  const location = profile?.location || 'Ahmedabad, Gujarat, India'
+  const githubUrl =
+    profile?.socials?.find((s) => s.platform?.toLowerCase() === 'github')?.url ||
+    'https://github.com/fenilrami27'
+  const linkedinUrl =
+    profile?.socials?.find((s) => s.platform?.toLowerCase() === 'linkedin')?.url ||
+    'https://www.linkedin.com/in/fenil-rami-67303938a'
+  const footerText =
+    settings?.footerText ||
+    'Python Backend & Full Stack Developer specializing in role-based business web applications with Django and React. Focused on clean database models, robust REST APIs, and crisp user interfaces.'
+  const availability =
+    profile?.availabilityStatus || profile?.availabilityNote || 'Ahmedabad · Open to work'
 
   return (
     <footer className="border-t border-border bg-bg-elevated/60 transition-colors duration-200">
@@ -28,17 +46,17 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg accent-gradient-bg flex items-center justify-center font-bold text-white text-xs">
                 FR
               </div>
-              <span className="font-heading font-bold text-lg text-text">Fenil Rami</span>
+              <span className="font-heading font-bold text-lg text-text">
+                {profile?.name || 'Fenil Rami'}
+              </span>
             </Link>
             <p className="text-sm text-text-muted max-w-md leading-relaxed mb-6">
-              Python Backend &amp; Full Stack Developer specializing in role-based business web
-              applications with Django and React. Focused on clean database models, robust REST
-              APIs, and crisp user interfaces.
+              {footerText}
             </p>
             {/* Social links */}
             <div className="flex items-center gap-3">
               <IconButton
-                href="https://github.com/fenilrami27"
+                href={githubUrl}
                 aria-label="GitHub profile of Fenil Rami"
                 variant="secondary"
                 size="sm"
@@ -46,7 +64,7 @@ export function Footer() {
                 <SiGithub className="w-4 h-4 text-text" aria-hidden="true" />
               </IconButton>
               <IconButton
-                href="https://www.linkedin.com/in/fenil-rami-67303938a"
+                href={linkedinUrl}
                 aria-label="LinkedIn profile of Fenil Rami"
                 variant="secondary"
                 size="sm"
@@ -54,7 +72,7 @@ export function Footer() {
                 <FaLinkedin className="w-4 h-4 text-text" aria-hidden="true" />
               </IconButton>
               <IconButton
-                href="mailto:fenilrami1266@gmail.com"
+                href={`mailto:${email}`}
                 aria-label="Send email to Fenil Rami"
                 variant="secondary"
                 size="sm"
@@ -109,13 +127,13 @@ export function Footer() {
               Location &amp; Contact
             </h3>
             <div className="space-y-2.5 text-sm text-text-muted">
-              <p>Ahmedabad, Gujarat, India</p>
+              <p>{location}</p>
               <p>
                 <a
-                  href="mailto:fenilrami1266@gmail.com"
+                  href={`mailto:${email}`}
                   className="text-text hover:text-accent-1 dark:hover:text-accent-2 transition-colors break-all"
                 >
-                  fenilrami1266@gmail.com
+                  {email}
                 </a>
               </p>
               <p className="text-xs text-text-subtle pt-2">
@@ -129,7 +147,7 @@ export function Footer() {
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-subtle">
           <p>© {currentYear} Fenil Rami. Designed &amp; developed with React &amp; Django architecture.</p>
           <div className="flex items-center gap-4">
-            <span>Ahmedabad · Open to work</span>
+            <span>{availability}</span>
             <button
               id="back-to-top"
               type="button"

@@ -123,7 +123,8 @@ export function HeroSection({ profile }) {
               </Button>
 
               <Button
-                to="/resume"
+                href={profile.resumeUrl || '/api/v1/resume/'}
+                download="Fenil_Rami_Resume.pdf"
                 variant="secondary"
                 size="lg"
                 leftIcon={<LuFileDown className="w-4 h-4" aria-hidden="true" />}
@@ -174,8 +175,9 @@ export function HeroSection({ profile }) {
               <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-surface-2 border border-border/80 mb-5 flex items-center justify-center">
                 {profile.photo && !imgError ? (
                   <img
-                    src={profile.photo}
-                    alt="Fenil Rami - Python Backend & Full Stack Developer"
+                    src={typeof profile.photo === 'object' && profile.photo ? profile.photo.url : profile.photo}
+                    alt={profile.photoAlt || (typeof profile.photo === 'object' && profile.photo?.alt) || 'Fenil Rami - Python Backend & Full Stack Developer'}
+                    srcSet={typeof profile.photo === 'object' && profile.photo?.srcset ? profile.photo.srcset : undefined}
                     width="400"
                     height="500"
                     decoding="async"

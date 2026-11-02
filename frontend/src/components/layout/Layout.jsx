@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
 import { ScrollProgress } from './ScrollProgress'
+import { CompanyBanner } from './CompanyBanner'
 
 export function Layout() {
   const { pathname, hash } = useLocation()
@@ -38,6 +39,9 @@ export function Layout() {
 
       {/* Progress indicator */}
       <ScrollProgress />
+
+      {/* Personalized Welcome Banner (for=Company&role=Role) */}
+      <CompanyBanner />
 
       {/* Header / Navbar */}
       <Navbar />

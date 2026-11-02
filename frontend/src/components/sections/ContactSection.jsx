@@ -6,6 +6,7 @@ import { Section } from '../ui/Section'
 import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
 import { useContactMutation } from '../../hooks/usePortfolio'
+import { trackEvent } from '../../lib/analytics'
 
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || ''
 
@@ -126,6 +127,7 @@ export function ContactSection({ profile = {}, settings = {} }) {
         turnstileToken: turnstileToken,
       }
       const res = await mutation.mutateAsync(payload)
+      trackEvent('contact_submit', { hasTurnstile: Boolean(turnstileToken) })
       setStatusMessage({ type: 'success', text: res.message || 'Message sent successfully!' })
       setFormData({ name: '', email: '', message: '', website_hp: '' })
       setTurnstileToken('')

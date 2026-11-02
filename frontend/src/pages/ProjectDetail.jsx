@@ -60,12 +60,41 @@ export default function ProjectDetail() {
     return 'default'
   }
 
-  return (
-    <>
-      <Helmet>
-        <title>{`${project.title} - Fenil Rami`}</title>
-        <meta name="description" content={project.oneLiner} />
-      </Helmet>
+    const ogImageUrl = `https://fenilrami.com/og-${project.slug}.png`
+    const pageUrl = `https://fenilrami.com/projects/${project.slug}`
+    const pageTitle = `${project.title} - Fenil Rami`
+    const truncatedDesc = project.oneLiner ? project.oneLiner.slice(0, 150) : ''
+
+    const projectSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: project.title,
+      description: project.oneLiner,
+      applicationCategory: project.type,
+      operatingSystem: 'Web',
+      author: {
+        '@type': 'Person',
+        name: 'Fenil Rami',
+        url: 'https://fenilrami.com/',
+      },
+    }
+
+    return (
+      <>
+        <Helmet>
+          <title>{pageTitle}</title>
+          <meta name="description" content={truncatedDesc} />
+          <link rel="canonical" href={pageUrl} />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={truncatedDesc} />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:image" content={ogImageUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={truncatedDesc} />
+          <meta name="twitter:image" content={ogImageUrl} />
+          <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
+        </Helmet>
 
       {/* Breadcrumb & Navigation Back */}
       <section className="pt-8 pb-4 border-b border-border/60 bg-surface/20">

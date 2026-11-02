@@ -87,28 +87,30 @@ class Command(BaseCommand):
         self.stdout.write("Seeding Profile & Socials...")
         profile = Profile.load()
         profile.full_name = "Fenil Rami"
-        profile.headline = (
-            "Python Backend & Full Stack Developer (React, Django, PostgreSQL)"
+        profile.headline = "PYTHON BACKEND & FULL STACK DEVELOPER"
+        profile.statement = (
+            "Information Technology undergraduate and Python Developer Intern with hands-on experience "
+            "building business web applications using Python, Django and React."
         )
-        profile.statement = "I build role-based business web applications with Django and React, from the REST API to the interface."
         profile.supporting_line = (
             "Python Developer Intern at Vibe Tech Labs. I turn real business workflows "
             "(orders, approvals, production, invoicing) into clean, reliable software."
         )
         profile.about = (
-            "I'm a final-year Information Technology student at Gandhinagar University and a Python Developer "
-            "Intern at Vibe Tech Labs. I independently built the complete React frontend of a multi-company "
-            "pharmaceutical ERP covering HRMS, orders, inventory, production, QC/QA and invoicing, and I'm "
-            "working on the Django backend of a university website. Outside code, I've led university cultural "
-            "events as Cultural Head and coordinated a tech fest arena."
+            "Information Technology undergraduate and Python Developer Intern with hands-on experience "
+            "building business web applications using Python, Django and React. Independently developed the "
+            "frontend of a multi-company pharmaceutical ERP project and currently contributing to Django "
+            "backend development for a university website. Familiar with REST APIs, role-based application "
+            "workflows, database-driven features and collaborative software development. Seeking Python "
+            "Backend / Full Stack Developer opportunities."
         )
-        profile.location = "Ahmedabad, Gujarat, India"
+        profile.location = "Ahmedabad, Gujarat"
         profile.email = "fenilrami1266@gmail.com"
         profile.show_email = True
+        profile.phone = "9978643380"
+        profile.show_phone = True
         profile.availability_status = Profile.Availability.OPEN_TO_WORK
-        profile.availability_note = (
-            "Available for full-time opportunities and internships."
-        )
+        profile.availability_note = "Available for Python Backend and Full Stack opportunities."
         profile.save()
 
         # Roles Sought

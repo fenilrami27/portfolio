@@ -13,9 +13,10 @@ django-axes>=6.5.0,<6.6.0
 django-unfold>=0.49.0,<0.50.0
 
 # Media & Storage
-Pillow>=10.4.0,<11.0.0
+Pillow>=11.0.0
 django-cloudinary-storage>=0.3.0,<0.4.0
 cloudinary>=1.41.0,<2.0.0
+qrcode>=8.0.0
 
 # API Serializer & OpenAPI Documentation
 djangorestframework-camel-case>=1.4.2,<1.5.0

@@ -37,6 +37,10 @@ export default [
         Event: 'readonly',
         CustomEvent: 'readonly',
         HTMLElement: 'readonly',
+        fetch: 'readonly',
+        AbortController: 'readonly',
+        sessionStorage: 'readonly',
+        process: 'readonly',
       },
     },
     rules: {

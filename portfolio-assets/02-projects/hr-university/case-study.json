@@ -1,0 +1,51 @@
+{
+  "title": "HR University – University Website & Portal",
+  "slug": "hr-university",
+  "oneLiner": "An interactive university web portal and modular Django 5 REST backend managing academic departments, admission workflows, and campus events.",
+  "role": "Full Stack Developer (Frontend + Backend)",
+  "status": "In progress",
+  "type": "Full Stack",
+  "tier": "featured",
+  "isFeatured": true,
+  "isPublished": true,
+  "isEmployerProject": false,
+  "startedOn": "2026-07-01",
+  "endedOn": null,
+  "githubUrl": "https://github.com/fenilrami27",
+  "liveUrl": "",
+  "videoUrl": "",
+  "note": "Frontend developed with interactive animations; Django 5 modular backend in active development.",
+  "description": [
+    "Architecting and building a modern institutional web portal for university admissions, department directories, campus events, and student enquiry management.",
+    "Engineered the frontend experience with an animated introductory sequence, live institutional statistics counters, hero video integration, and responsive modal enquiry workflows.",
+    "Constructed the backend in Django 5 with Django REST Framework, cleanly structured into 11 decoupled apps, 32 relational models, and 38 REST endpoints."
+  ],
+  "featureGroups": [
+    {
+      "group": "Interactive Portal Frontend",
+      "items": [
+        "Animated page transitions and live institutional statistics counter displays.",
+        "Interactive admissions enquiry popup with client-side field validation.",
+        "Mobile-first navigation across faculties, research centers, and campus event feeds."
+      ]
+    },
+    {
+      "group": "Decoupled Django 5 Backend",
+      "items": [
+        "11 decoupled Django applications isolating admissions, faculty, placements, and news.",
+        "38 RESTful API endpoints with structured serializers and OpenAPI documentation.",
+        "Comprehensive Django admin permission scoping for non-technical administrative staff."
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "title": "Decoupled Relational Schema for 11 University Domains",
+      "body": "Orchestrating admissions, courses, faculty, and events without circular foreign key dependencies. Solved using clean domain-driven application boundaries and abstract base models."
+    },
+    {
+      "title": "Maintaining High Core Web Vitals with Rich Media",
+      "body": "Optimized animated introductory sequences and video media with lazy rendering and hardware-accelerated CSS transforms to guarantee sub-2.5s LCP."
+    }
+  ]
+}

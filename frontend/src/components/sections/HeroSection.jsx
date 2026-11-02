@@ -11,6 +11,8 @@ import { Chip } from '../ui/Chip'
 import { TechIcon } from '../ui/TechIcon'
 import { heroContainerVariants, heroItemVariants } from '../../lib/motion'
 
+import { trackEvent } from '../../lib/analytics'
+
 export function HeroSection({ profile }) {
   const shouldReduceMotion = useReducedMotion()
   const [imgError, setImgError] = useState(false)
@@ -127,6 +129,7 @@ export function HeroSection({ profile }) {
                 download="Fenil_Rami_Resume.pdf"
                 variant="secondary"
                 size="lg"
+                onClick={() => trackEvent('resume_download', { location: 'hero' })}
                 leftIcon={<LuFileDown className="w-4 h-4" aria-hidden="true" />}
                 aria-label="Download resume"
               >

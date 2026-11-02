@@ -69,14 +69,23 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>{settings?.seoTitle || 'Fenil Rami | Python Backend & Full Stack Developer'}</title>
+        <title>{settings?.seoTitle || 'Fenil Rami - Python Backend & Full Stack Developer'}</title>
         <meta
           name="description"
           content={
             settings?.seoDescription ||
-            'Portfolio of Fenil Rami, Python Backend & Full Stack Developer building role-based business web apps with Django and React.'
+            'Portfolio of Fenil Rami, Python Backend & Full Stack Developer building enterprise web apps with Django and React.'
           }
         />
+        <link rel="canonical" href="https://fenilrami.com/" />
+        <meta property="og:title" content="Fenil Rami - Python Backend & Full Stack Developer" />
+        <meta property="og:description" content="Portfolio of Fenil Rami, Python Backend & Full Stack Developer building enterprise web apps with Django and React." />
+        <meta property="og:url" content="https://fenilrami.com/" />
+        <meta property="og:image" content="https://fenilrami.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Fenil Rami - Python Backend & Full Stack Developer" />
+        <meta name="twitter:description" content="Portfolio of Fenil Rami, Python Backend & Full Stack Developer building enterprise web apps with Django and React." />
+        <meta name="twitter:image" content="https://fenilrami.com/og-image.png" />
       </Helmet>
 
       {/* 1. Hero */}

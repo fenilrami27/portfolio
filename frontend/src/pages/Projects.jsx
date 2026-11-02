@@ -55,8 +55,23 @@ export default function Projects() {
         <title>Projects - Fenil Rami</title>
         <meta
           name="description"
-          content="Explore web systems, full-stack applications, and backend projects engineered by Fenil Rami using Django and React."
+          content="Explore enterprise ERP systems, university portals, and full-stack projects engineered by Fenil Rami with Django and React."
         />
+        <link rel="canonical" href="https://fenilrami.com/projects" />
+        <meta property="og:title" content="Projects - Fenil Rami" />
+        <meta
+          property="og:description"
+          content="Explore enterprise ERP systems, university portals, and full-stack projects engineered by Fenil Rami with Django and React."
+        />
+        <meta property="og:url" content="https://fenilrami.com/projects" />
+        <meta property="og:image" content="https://fenilrami.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Projects - Fenil Rami" />
+        <meta
+          name="twitter:description"
+          content="Explore enterprise ERP systems, university portals, and full-stack projects engineered by Fenil Rami with Django and React."
+        />
+        <meta name="twitter:image" content="https://fenilrami.com/og-image.png" />
       </Helmet>
 
       <section className="py-14 sm:py-20 border-b border-border/80 bg-surface/30">

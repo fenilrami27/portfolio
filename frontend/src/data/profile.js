@@ -1,23 +1,22 @@
 export const profileData = {
   name: 'Fenil Rami',
-  headline: 'Python Backend & Full Stack Developer (React, Django, PostgreSQL)',
+  headline: 'PYTHON BACKEND & FULL STACK DEVELOPER',
   statement:
-    'I build role-based business web applications with Django and React, from the REST API to the interface.',
+    'Information Technology undergraduate and Python Developer Intern with hands-on experience building business web applications using Python, Django and React.',
   supportingLine:
     'Python Developer Intern at Vibe Tech Labs. I turn real business workflows (orders, approvals, production, invoicing) into clean, reliable software.',
   about:
-    "I'm a final-year Information Technology student at Gandhinagar University and a Python Developer Intern at Vibe Tech Labs. I independently built the complete React frontend of a multi-company pharmaceutical ERP covering HRMS, orders, inventory, production, QC/QA and invoicing, and I'm working on the Django backend of a university website. Outside code, I've led university cultural events as Cultural Head and coordinated a tech fest arena.",
-  location: 'Ahmedabad, Gujarat, India',
+    'Information Technology undergraduate and Python Developer Intern with hands-on experience building business web applications using Python, Django and React. Independently developed the frontend of a multi-company pharmaceutical ERP project and currently contributing to Django backend development for a university website. Familiar with REST APIs, role-based application workflows, database-driven features and collaborative software development. Seeking Python Backend / Full Stack Developer opportunities.',
+  location: 'Ahmedabad, Gujarat',
   email: 'fenilrami1266@gmail.com',
+  phone: '9978643380',
+  showPhone: true,
   availability: {
     status: 'Open to work',
     roles: ['Python Backend Developer', 'Django Developer', 'Full Stack Developer'],
-    note: 'Available for full-time opportunities and internships.',
+    note: 'Available for Python Backend and Full Stack opportunities.',
   },
-  // Photo path or fallback to monogram avatar
-  // TODO(Fenil): /assets/personal/photo-main.jpg
   photo: '/assets/personal/photo-main.jpg',
-  // TODO(Fenil): add the final resume file to public/Fenil_Rami_Resume.pdf
   resumeUrl: '/Fenil_Rami_Resume.pdf',
   socials: [
     {

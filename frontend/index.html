@@ -3,29 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Icons & Manifest -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     
-    <title>Fenil Rami | Python Backend &amp; Full Stack Developer</title>
-    <meta name="description" content="Portfolio of Fenil Rami, Python Backend &amp; Full Stack Developer building role-based business web apps with Django and React." />
+    <title>Fenil Rami - Python Backend &amp; Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Fenil Rami, Python Backend &amp; Full Stack Developer building enterprise web apps with Django and React." />
     
-    <!-- Canonical URL placeholder -->
-    <!-- TODO(Part 3): Update canonical URL with actual production domain -->
-    <link rel="canonical" href="https://fenilrami.dev/" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://fenilrami.com/" />
+    
+    <!-- Preconnect to CDN / Backend -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fenilrami.dev/" />
-    <meta property="og:title" content="Fenil Rami | Python Backend &amp; Full Stack Developer" />
-    <meta property="og:description" content="I build role-based business web applications with Django and React, from the REST API to the interface." />
-    <!-- TODO(Part 3): Replace with production og-image.png -->
-    <meta property="og:image" content="/assets/personal/og-image.png" />
+    <meta property="og:url" content="https://fenilrami.com/" />
+    <meta property="og:title" content="Fenil Rami - Python Backend &amp; Full Stack Developer" />
+    <meta property="og:description" content="Portfolio of Fenil Rami, Python Backend &amp; Full Stack Developer building enterprise web apps with Django and React." />
+    <meta property="og:image" content="https://fenilrami.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     
-    <!-- Twitter -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Fenil Rami | Python Backend &amp; Full Stack Developer" />
-    <meta name="twitter:description" content="I build role-based business web applications with Django and React, from the REST API to the interface." />
-    <!-- TODO(Part 3): Replace with production twitter og-image.png -->
-    <meta name="twitter:image" content="/assets/personal/og-image.png" />
+    <meta name="twitter:title" content="Fenil Rami - Python Backend &amp; Full Stack Developer" />
+    <meta name="twitter:description" content="Portfolio of Fenil Rami, Python Backend &amp; Full Stack Developer building enterprise web apps with Django and React." />
+    <meta name="twitter:image" content="https://fenilrami.com/og-image.png" />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#0B0E14" id="theme-color-meta" />
@@ -52,33 +59,51 @@
       })();
     </script>
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD: Person & ProfilePage) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Fenil Rami",
-        "jobTitle": "Python Backend & Full Stack Developer",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ahmedabad",
-          "addressRegion": "Gujarat",
-          "addressCountry": "India"
-        },
-        "email": "fenilrami1266@gmail.com",
-        "sameAs": [
-          "https://www.linkedin.com/in/fenil-rami-67303938a",
-          "https://github.com/fenilrami27"
-        ],
-        "knowsAbout": [
-          "Python",
-          "Django",
-          "Django REST Framework",
-          "React.js",
-          "PostgreSQL",
-          "REST API Development",
-          "Role-Based Access Control",
-          "Full Stack Web Development"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://fenilrami.com/#person",
+            "name": "Fenil Rami",
+            "jobTitle": "Python Backend & Full Stack Developer",
+            "url": "https://fenilrami.com/",
+            "image": "https://fenilrami.com/og-image.png",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ahmedabad",
+              "addressRegion": "Gujarat",
+              "addressCountry": "India"
+            },
+            "email": "mailto:fenilrami1266@gmail.com",
+            "telephone": "+919978643380",
+            "sameAs": [
+              "https://www.linkedin.com/in/fenil-rami-67303938a",
+              "https://github.com/fenilrami27"
+            ],
+            "knowsAbout": [
+              "Python",
+              "Django",
+              "Django REST Framework",
+              "React.js",
+              "PostgreSQL",
+              "REST API Development",
+              "Role-Based Access Control",
+              "Full Stack Web Development"
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://fenilrami.com/#webpage",
+            "url": "https://fenilrami.com/",
+            "name": "Fenil Rami - Python Backend & Full Stack Developer",
+            "description": "Portfolio of Fenil Rami, Python Backend & Full Stack Developer building enterprise web apps with Django and React.",
+            "mainEntity": {
+              "@id": "https://fenilrami.com/#person"
+            }
+          }
         ]
       }
     </script>

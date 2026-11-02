@@ -1,0 +1,46 @@
+{
+  "title": "Interior Design Studio – Dynamic Website",
+  "slug": "interior-design-studio",
+  "oneLiner": "A custom Django website featuring dynamic project galleries, client authentication, and OTP-verified password recovery.",
+  "role": "Django Developer",
+  "status": "Learning project",
+  "type": "Website",
+  "tier": "compact",
+  "isFeatured": false,
+  "isPublished": true,
+  "isEmployerProject": false,
+  "startedOn": "2026-05-01",
+  "endedOn": "2026-06-01",
+  "githubUrl": "https://github.com/fenilrami27",
+  "liveUrl": "",
+  "videoUrl": "",
+  "note": "Built during internship as a learning replica of a commercial website; all images and logos are sample data.",
+  "description": [
+    "Constructed a database-driven portfolio website for an interior design studio featuring dynamic project portfolios, architectural category filtering, and client consultation workflows.",
+    "Integrated full user authentication with session management, role verification, and a secure email OTP password reset mechanism.",
+    "Empowered studio administrators to upload high-resolution design photography, organize project metadata, and curate hero showcase collections directly through the Django admin."
+  ],
+  "featureGroups": [
+    {
+      "group": "Client Features & Auth",
+      "items": [
+        "Dynamic architectural project galleries with category filtering.",
+        "Secure user registration, authentication, and session persistence.",
+        "Time-sensitive OTP password recovery via Django email backend."
+      ]
+    },
+    {
+      "group": "Admin Curation",
+      "items": [
+        "Dynamic portfolio image gallery management.",
+        "Categorized design tags and project one-liners."
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "title": "Preventing Replay Attacks in OTP Password Recovery",
+      "body": "Implemented server-side timestamp validation with single-use invalidation flags to protect user account recovery flows."
+    }
+  ]
+}

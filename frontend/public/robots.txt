@@ -1,0 +1,7 @@
+# robots.txt for Fenil Rami Portfolio
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://fenilrami.com/sitemap.xml

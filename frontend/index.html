@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <title>Fenil Rami | Python Backend &amp; Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Fenil Rami, Python Backend &amp; Full Stack Developer building role-based business web apps with Django and React." />
+    
+    <!-- Canonical URL placeholder -->
+    <!-- TODO(Part 3): Update canonical URL with actual production domain -->
+    <link rel="canonical" href="https://fenilrami.dev/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fenilrami.dev/" />
+    <meta property="og:title" content="Fenil Rami | Python Backend &amp; Full Stack Developer" />
+    <meta property="og:description" content="I build role-based business web applications with Django and React, from the REST API to the interface." />
+    <!-- TODO(Part 3): Replace with production og-image.png -->
+    <meta property="og:image" content="/assets/personal/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fenil Rami | Python Backend &amp; Full Stack Developer" />
+    <meta name="twitter:description" content="I build role-based business web applications with Django and React, from the REST API to the interface." />
+    <!-- TODO(Part 3): Replace with production twitter og-image.png -->
+    <meta name="twitter:image" content="/assets/personal/og-image.png" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0B0E14" id="theme-color-meta" />
+
+    <!-- Inline theme script to prevent flash of unstyled theme (FOUT/FOUC) -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('fenil_portfolio_theme');
+          var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored ? stored : (systemDark ? 'dark' : 'light');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            var meta = document.getElementById('theme-color-meta');
+            if (meta) meta.setAttribute('content', '#0B0E14');
+          } else {
+            document.documentElement.classList.remove('dark');
+            var meta = document.getElementById('theme-color-meta');
+            if (meta) meta.setAttribute('content', '#F6F7FB');
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Fenil Rami",
+        "jobTitle": "Python Backend & Full Stack Developer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ahmedabad",
+          "addressRegion": "Gujarat",
+          "addressCountry": "India"
+        },
+        "email": "fenilrami1266@gmail.com",
+        "sameAs": [
+          "https://www.linkedin.com/in/fenil-rami-67303938a",
+          "https://github.com/fenilrami27"
+        ],
+        "knowsAbout": [
+          "Python",
+          "Django",
+          "Django REST Framework",
+          "React.js",
+          "PostgreSQL",
+          "REST API Development",
+          "Role-Based Access Control",
+          "Full Stack Web Development"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-bg text-text antialiased selection:bg-accent-1/25 selection:text-text min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

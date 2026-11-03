@@ -64,6 +64,9 @@ if env_file.exists():
 DEBUG = env("DEBUG")
 SECRET_KEY = env("SECRET_KEY")
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+if ".vercel.app" not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(".vercel.app")
+
 
 ADMIN_URL = env("ADMIN_URL").strip("/") + "/"
 
@@ -150,10 +153,13 @@ if DATABASE_URL:
         DATABASES["default"].setdefault("OPTIONS", {})
         DATABASES["default"]["OPTIONS"]["connect_timeout"] = 10
 else:
+    # On serverless (e.g. Vercel), /var/task is read-only; use /tmp when DATABASE_URL is not set
+    import os
+    sqlite_path = Path("/tmp/db.sqlite3") if os.environ.get("VERCEL") else (BASE_DIR / "db.sqlite3")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+            "NAME": sqlite_path,
         }
     }
 
@@ -205,8 +211,14 @@ CACHES = {
 
 # CORS & CSRF
 CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS")
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https:\/\/.*\.vercel\.app$",
+]
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS")
+if "https://*.vercel.app" not in CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS.append("https://*.vercel.app")
+
 
 # Django REST Framework
 REST_FRAMEWORK = {

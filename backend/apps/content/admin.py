@@ -9,6 +9,7 @@ from unfold.admin import ModelAdmin, TabularInline
 from apps.content.models import (
     Achievement,
     Certificate,
+    Competency,
     Education,
     Experience,
     ExperienceBullet,
@@ -210,3 +211,11 @@ class TechnologyAdmin(ModelAdmin):
     list_filter = ("category",)
     search_fields = ("name", "slug")
     prepopulated_fields = {"slug": ("name",)}
+
+
+@admin.register(Competency)
+class CompetencyAdmin(ModelAdmin):
+    list_display = ("title", "code", "full_name", "icon_key", "order", "is_visible")
+    list_editable = ("order", "is_visible")
+    search_fields = ("title", "code", "full_name", "description")
+

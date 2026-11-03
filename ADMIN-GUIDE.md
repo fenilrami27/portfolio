@@ -11,7 +11,7 @@ Welcome to your portfolio administration guide! This document explains how you c
    - **Production:** `https://api.fenilrami.com/admin/` (or your custom `ADMIN_URL` path)
 2. Enter your credentials:
    - **Username:** `fenil`
-   - **Password:** *(Your configured password; locally defaults to `FenilPortfolio2026!`)*
+   - **Password:** *(Configured during setup / createsuperuser)*
 3. Click **Log In**. You will arrive at the **Content Overview & Dashboard**.
 
 ---

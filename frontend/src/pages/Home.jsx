@@ -13,12 +13,14 @@ import {
   useTestimonials,
   useSettings,
   useFocusAreas,
+  useCompetencies,
   useStats,
   useJourney,
 } from '../hooks/usePortfolio'
 import { HeroSection } from '../components/sections/HeroSection'
 import { OverviewSection } from '../components/sections/OverviewSection'
 import { FeaturedWorkSection } from '../components/sections/FeaturedWorkSection'
+import { CoreCompetenciesSection } from '../components/sections/CoreCompetenciesSection'
 import { SkillsSection } from '../components/sections/SkillsSection'
 import { JourneySection } from '../components/sections/JourneySection'
 import { LeadershipSection } from '../components/sections/LeadershipSection'
@@ -45,6 +47,7 @@ export default function Home() {
   const { data: testimonials = [] } = useTestimonials()
   const { data: settings } = useSettings()
   const { data: focusAreas = [] } = useFocusAreas()
+  const { data: competencies = [] } = useCompetencies()
   const { data: stats = [] } = useStats()
   const { data: journey = [] } = useJourney()
 
@@ -103,7 +106,10 @@ export default function Home() {
       {/* 3. Featured Work */}
       <FeaturedWorkSection projects={projects} />
 
-      {/* 4. Skills */}
+      {/* 4. Core Competencies */}
+      <CoreCompetenciesSection competencies={competencies} />
+
+      {/* 5. Skills */}
       <SkillsSection skills={skills} />
 
       {/* 5. Journey */}

@@ -177,6 +177,40 @@ export const adminApi = {
     return handleResponse(res)
   },
 
+  // Competencies
+  getCompetencies: async () => {
+    const res = await fetch(`${API_BASE_URL}/api/v1/admin/competencies/`, {
+      headers: getAuthHeaders(),
+    })
+    return handleResponse(res)
+  },
+
+  createCompetency: async (data) => {
+    const res = await fetch(`${API_BASE_URL}/api/v1/admin/competencies/`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(data),
+    })
+    return handleResponse(res)
+  },
+
+  updateCompetency: async (id, data) => {
+    const res = await fetch(`${API_BASE_URL}/api/v1/admin/competencies/${id}/`, {
+      method: 'PATCH',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(data),
+    })
+    return handleResponse(res)
+  },
+
+  deleteCompetency: async (id) => {
+    const res = await fetch(`${API_BASE_URL}/api/v1/admin/competencies/${id}/`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    })
+    return handleResponse(res)
+  },
+
   // Experience
   getExperience: async () => {
     const res = await fetch(`${API_BASE_URL}/api/v1/admin/experience/`, {

@@ -11,6 +11,7 @@ from rest_framework import serializers
 from apps.content.models import (
     Achievement,
     Certificate,
+    Competency,
     Education,
     Experience,
     ExperienceBullet,
@@ -147,6 +148,22 @@ class FocusAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = FocusArea
         fields = ["id", "title", "description", "icon_key", "order"]
+
+
+class CompetencySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Competency
+        fields = [
+            "id",
+            "title",
+            "code",
+            "full_name",
+            "description",
+            "icon_key",
+            "order",
+            "is_visible",
+        ]
+
 
 
 class StatSerializer(serializers.ModelSerializer):

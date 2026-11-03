@@ -46,6 +46,15 @@ export function useProject(slug) {
   })
 }
 
+export function useCompetencies() {
+  return useQuery({
+    queryKey: ['competencies'],
+    queryFn: api.getCompetencies,
+    placeholderData: fallbackData.competencies,
+    ...retryConfig,
+  })
+}
+
 export function useSkills() {
   return useQuery({
     queryKey: ['skills'],

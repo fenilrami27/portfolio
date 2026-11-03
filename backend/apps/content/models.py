@@ -662,3 +662,55 @@ class Technology(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Competency(models.Model):
+    """
+    Core competency card (AI, AML, ML, Computer Vision, CN, Team Leadership, Project Management).
+    Fully editable from the admin portal.
+    """
+
+    title = models.CharField(
+        max_length=150,
+        verbose_name=_("Title"),
+        help_text=_("Display title (e.g. Artificial Intelligence (AI))."),
+    )
+    code = models.CharField(
+        max_length=50,
+        blank=True,
+        verbose_name=_("Short code / abbreviation"),
+        help_text=_("e.g. AI, AML, ML, CN."),
+    )
+    full_name = models.CharField(
+        max_length=150,
+        blank=True,
+        verbose_name=_("Full expansion"),
+        help_text=_("e.g. Advanced Machine Learning, Computer Networks."),
+    )
+    description = models.TextField(
+        verbose_name=_("Short description"),
+        help_text=_("One-line description of the technical area."),
+    )
+    icon_key = models.CharField(
+        max_length=50,
+        default="LuBrain",
+        verbose_name=_("Icon identifier"),
+        help_text=_("React icon identifier (e.g. LuBrain, LuCpu, LuEye, LuNetwork, LuUsers, LuKanban)."),
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_("Display order"),
+    )
+    is_visible = models.BooleanField(
+        default=True,
+        verbose_name=_("Is visible"),
+    )
+
+    class Meta:
+        ordering = ["order", "id"]
+        verbose_name = _("Core Competency")
+        verbose_name_plural = _("Core Competencies")
+
+    def __str__(self):
+        return f"{self.title} ({self.code or self.full_name})"
+

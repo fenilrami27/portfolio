@@ -9,8 +9,8 @@ export default function AdminLoginPage() {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/admin'
 
-  const [username, setUsername] = useState('Admin')
-  const [password, setPassword] = useState('Fenil123')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -103,7 +103,7 @@ export default function AdminLoginPage() {
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Admin"
+                  placeholder="fenil"
                   className="w-full pl-10 pr-4 py-2.5 bg-black/40 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/80 transition-colors"
                 />
               </div>

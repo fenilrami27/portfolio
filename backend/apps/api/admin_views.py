@@ -20,6 +20,7 @@ from rest_framework.views import APIView
 from apps.api.admin_serializers import (
     AdminAchievementSerializer,
     AdminCertificateSerializer,
+    AdminCompetencySerializer,
     AdminContactMessageSerializer,
     AdminEducationSerializer,
     AdminExperienceSerializer,
@@ -36,6 +37,7 @@ from apps.api.admin_serializers import (
 from apps.content.models import (
     Achievement,
     Certificate,
+    Competency,
     Education,
     Experience,
     ExperienceBullet,
@@ -1079,3 +1081,67 @@ class AdminSiteSettingsView(APIView):
         settings_obj.save()
         clear_portfolio_cache()
         return Response(AdminSiteSettingsSerializer(settings_obj).data)
+
+
+class AdminCompetenciesView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+        items = Competency.objects.all().order_by("order", "id")
+        return Response(AdminCompetencySerializer(items, many=True).data)
+
+    def post(self, request):
+        data = request.data
+        title = data.get("title", "").strip()
+        if not title:
+            return Response({"detail": "Title is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        item = Competency.objects.create(
+            title=title,
+            code=data.get("code", "").strip(),
+            full_name=data.get("full_name", data.get("fullName", "")).strip(),
+            description=data.get("description", "").strip(),
+            icon_key=data.get("icon_key", data.get("iconKey", "LuBrain")),
+            order=int(data.get("order", 0) or 0),
+            is_visible=data.get("is_visible", True) in [True, "true", "True", "1"],
+        )
+        clear_portfolio_cache()
+        return Response(AdminCompetencySerializer(item).data, status=status.HTTP_201_CREATED)
+
+
+class AdminCompetencyDetailView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def patch(self, request, pk):
+        item = Competency.objects.filter(pk=pk).first()
+        if not item:
+            return Response({"detail": "Competency not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        data = request.data
+        if "title" in data:
+            item.title = data["title"].strip()
+        if "code" in data:
+            item.code = data["code"].strip()
+        if "full_name" in data or "fullName" in data:
+            item.full_name = data.get("full_name", data.get("fullName", "")).strip()
+        if "description" in data:
+            item.description = data["description"].strip()
+        if "icon_key" in data or "iconKey" in data:
+            item.icon_key = data.get("icon_key", data.get("iconKey", "LuBrain"))
+        if "order" in data:
+            item.order = int(data["order"] or 0)
+        if "is_visible" in data or "isVisible" in data:
+            item.is_visible = data.get("is_visible", data.get("isVisible")) in [True, "true", "True", "1"]
+
+        item.save()
+        clear_portfolio_cache()
+        return Response(AdminCompetencySerializer(item).data)
+
+    def delete(self, request, pk):
+        item = Competency.objects.filter(pk=pk).first()
+        if not item:
+            return Response({"detail": "Competency not found."}, status=status.HTTP_404_NOT_FOUND)
+        item.delete()
+        clear_portfolio_cache()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+

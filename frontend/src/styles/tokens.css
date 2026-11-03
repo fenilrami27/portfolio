@@ -11,12 +11,17 @@
   --color-text-subtle: #6B768B;
   --color-accent-1: #4F46E5;
   --color-accent-2: #0891B2;
+  --color-accent-glow: rgba(79, 70, 229, 0.16);
   --color-success: #059669;
   --color-warning: #B45309;
   --color-danger: #DC2626;
 
+  --radius-card: 20px;
+  --radius-box: 16px;
+  --radius-btn: 12px;
+
   --shadow-card: 0 4px 20px -2px rgba(14, 20, 36, 0.05);
-  --shadow-card-hover: 0 12px 28px -4px rgba(79, 70, 229, 0.1);
+  --shadow-card-hover: 0 14px 32px -4px rgba(79, 70, 229, 0.14);
 }
 
 .dark {
@@ -32,10 +37,15 @@
   --color-text-subtle: #6F7A8E;
   --color-accent-1: #6366F1;
   --color-accent-2: #22D3EE;
+  --color-accent-glow: rgba(99, 102, 241, 0.25);
   --color-success: #34D399;
   --color-warning: #FBBF24;
   --color-danger: #F87171;
 
+  --radius-card: 20px;
+  --radius-box: 16px;
+  --radius-btn: 12px;
+
   --shadow-card: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 32px -4px rgba(99, 102, 241, 0.15);
+  --shadow-card-hover: 0 16px 36px -4px rgba(99, 102, 241, 0.22);
 }

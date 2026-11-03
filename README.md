@@ -44,44 +44,55 @@ Portfolio/
 
 ## 🚀 Quickstart: Running Locally
 
-### Step 1: Start Django Backend (Port 8000)
+### One-Command Startup (Frontend + Backend)
+From the `Portfolio` root directory:
+```powershell
+# Using PowerShell
+.\start_dev.ps1
+
+# Or using Command Prompt / Double-click
+start_dev.bat
+```
+Both servers launch in their respective environments:
+- **Public Portfolio:** `http://localhost:5173/`
+- **Frontend Admin Panel:** `http://localhost:5173/admin/`
+- **Django Unfold Admin:** `http://127.0.0.1:8000/admin/`
+  - **Username:** `fenil`
+  - **Password:** *(Configured during setup / createsuperuser)*
+- **Backend Portal & API Docs:** `http://127.0.0.1:8000/`
+
+> **Resilient Fallback Mode:** If the backend is ever stopped, the React frontend automatically and gracefully switches to `src/data/fallback.json` without breaking or showing blank screens.
+
+---
+
+### Manual Startup (Individual Terminals)
+
+#### Step 1: Start Django Backend (Port 8000)
 ```powershell
 cd Portfolio/backend
 
 # Activate virtual environment
 .venv\Scripts\Activate.ps1
 
-# Run migrations and seed real portfolio data
-python manage.py migrate
-python manage.py seed_portfolio
-
-# Import real assets from portfolio-assets/
-python manage.py import_assets
-
 # Start development server
-python manage.py runserver 8000
+python manage.py runserver 127.0.0.1:8000
 ```
 - **Backend API:** `http://127.0.0.1:8000/api/v1/portfolio/`
+- **Health Check:** `http://127.0.0.1:8000/api/health/`
 - **Admin Panel:** `http://127.0.0.1:8000/admin/`
-  - **Username:** `fenil`
-  - **Password:** `FenilPortfolio2026!`
 - **Swagger Documentation:** `http://127.0.0.1:8000/api/docs/`
 
-### Step 2: Start React Frontend (Port 5173)
-In a second terminal:
+#### Step 2: Start React Frontend (Port 5173)
 ```bash
 cd Portfolio/frontend
-npm install
 npm run dev
 ```
-- **Frontend App:** `http://localhost:5173`
-- The Vite development server automatically proxies `/api` and `/media` requests to `http://127.0.0.1:8000`.
 
 ---
 
 ## 🧪 Testing & Code Quality
 
-### Backend Pytest Suite (44 tests passing)
+### Backend Pytest Suite (51 tests passing)
 ```powershell
 cd Portfolio/backend
 .venv\Scripts\pytest.exe tests -v

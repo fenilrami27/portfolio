@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import {
@@ -9,6 +9,7 @@ import {
   LuInfo,
   LuUser,
   LuLayers,
+  LuZoomIn,
 } from 'react-icons/lu'
 import { SiGithub } from 'react-icons/si'
 import { useProject, useProjects } from '../hooks/usePortfolio'
@@ -19,11 +20,19 @@ import { Chip } from '../components/ui/Chip'
 import { Button } from '../components/ui/Button'
 import { Skeleton } from '../components/ui/Skeleton'
 import { TechIcon } from '../components/ui/TechIcon'
+import { Lightbox } from '../components/ui/Lightbox'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
   const { data: project, isLoading, error } = useProject(slug)
   const { data: allProjects = [] } = useProjects()
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+  const openLightbox = (index) => {
+    setActiveImageIndex(index)
+    setLightboxOpen(true)
+  }
 
   // Calculate Previous and Next project links
   const { prevProject, nextProject } = useMemo(() => {
@@ -200,24 +209,55 @@ export default function ProjectDetail() {
       <section className="py-12 md:py-16 bg-surface/30 border-b border-border/80">
         <Container>
           <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <span className="text-xs uppercase font-mono tracking-wider text-accent-1 dark:text-accent-2 font-semibold">
+                  Visual Interface Previews
+                </span>
+                <h2 className="text-2xl font-bold text-text mt-1">Application Screenshots</h2>
+              </div>
+              {project.gallery && project.gallery.length > 0 && (
+                <span className="text-xs font-mono text-text-subtle">
+                  {project.gallery.length} verified {project.gallery.length === 1 ? 'view' : 'views'} (click to zoom)
+                </span>
+              )}
+            </div>
+
             {project.gallery && project.gallery.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {project.gallery.map((img, idx) => (
                   <div
                     key={idx}
-                    className="rounded-2xl overflow-hidden border border-border shadow-md bg-surface"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openLightbox(idx)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        openLightbox(idx)
+                      }
+                    }}
+                    className="group relative rounded-2xl overflow-hidden border border-border/90 shadow-md bg-surface hover:border-accent-1/60 hover:shadow-xl transition-all cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-1"
                   >
-                    <img
-                      src={img.src}
-                      alt={img.alt || `${project.title} screenshot ${idx + 1}`}
-                      width="600"
-                      height="400"
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-auto object-cover"
-                    />
+                    <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+                      <img
+                        src={img.src}
+                        alt={img.alt || `${project.title} screenshot ${idx + 1}`}
+                        width="600"
+                        height="375"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white">
+                        <span className="p-2.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-sm">
+                          <LuZoomIn className="w-5 h-5" />
+                        </span>
+                        <span className="text-xs font-medium tracking-wide">Click to enlarge</span>
+                      </div>
+                    </div>
                     {img.caption && (
-                      <p className="p-3 text-xs text-text-muted border-t border-border/60">
+                      <p className="p-3.5 text-xs text-text-muted border-t border-border/60 bg-surface/95 line-clamp-2">
                         {img.caption}
                       </p>
                     )}
@@ -388,6 +428,15 @@ export default function ProjectDetail() {
           </div>
         </Container>
       </section>
+
+      {/* Fullscreen Lightbox Modal */}
+      <Lightbox
+        images={project.gallery || []}
+        currentIndex={activeImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onIndexChange={setActiveImageIndex}
+      />
     </>
   )
 }

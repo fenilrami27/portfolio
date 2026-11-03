@@ -7,6 +7,7 @@ import { educationData } from '../data/education'
 import { leadershipData } from '../data/leadership'
 import { certificatesData, achievementsData, testimonialsData } from '../data/emptySections'
 import { siteSettings } from '../data/settings'
+import { competenciesData } from '../data/competencies'
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
 const USE_LOCAL_DATA = import.meta.env.VITE_USE_LOCAL_DATA === 'true'
@@ -153,6 +154,23 @@ export async function getProject(slug) {
   const notFoundErr = new Error(`Project with slug "${slug}" not found`)
   notFoundErr.status = 404
   throw notFoundErr
+}
+
+export async function getCompetencies() {
+  if (USE_LOCAL_DATA) {
+    return fallbackData.competencies || competenciesData
+  }
+
+  try {
+    const res = await fetchWithTimeout('/api/v1/competencies/')
+    if (res.ok) {
+      return await res.json()
+    }
+    return fallbackData.competencies || competenciesData
+  } catch (err) {
+    console.warn('Competencies API call failed, using fallback:', err.message)
+    return fallbackData.competencies || competenciesData
+  }
 }
 
 export async function getSkills() {

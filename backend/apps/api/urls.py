@@ -13,6 +13,8 @@ from apps.api.admin_views import (
     AdminAuthMeView,
     AdminCertificateDetailView,
     AdminCertificatesView,
+    AdminCompetenciesView,
+    AdminCompetencyDetailView,
     AdminDashboardStatsView,
     AdminEducationDetailView,
     AdminEducationView,
@@ -34,6 +36,7 @@ from apps.api.admin_views import (
 from apps.api.views import (
     AchievementsListView,
     CertificatesListView,
+    CompetenciesListView,
     ContactSubmitView,
     EducationListView,
     ExperienceListView,
@@ -57,6 +60,7 @@ urlpatterns = [
     path("projects/<slug:slug>/", ProjectDetailView.as_view(), name="project-detail"),
     path("profile/", ProfileDetailView.as_view(), name="profile-detail"),
     path("settings/", SiteSettingsDetailView.as_view(), name="settings-detail"),
+    path("competencies/", CompetenciesListView.as_view(), name="competencies-list"),
     path("skills/", SkillsListView.as_view(), name="skills-list"),
     path("experience/", ExperienceListView.as_view(), name="experience-list"),
     path("education/", EducationListView.as_view(), name="education-list"),
@@ -95,6 +99,16 @@ urlpatterns = [
         "admin/skills/<int:pk>/",
         AdminSkillDetailView.as_view(),
         name="admin-skill-detail",
+    ),
+    path(
+        "admin/competencies/",
+        AdminCompetenciesView.as_view(),
+        name="admin-competencies",
+    ),
+    path(
+        "admin/competencies/<int:pk>/",
+        AdminCompetencyDetailView.as_view(),
+        name="admin-competency-detail",
     ),
     path("admin/experience/", AdminExperienceView.as_view(), name="admin-experience"),
     path(

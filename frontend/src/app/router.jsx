@@ -18,6 +18,7 @@ const AdminLoginPage = lazy(() => import('../admin/pages/AdminLoginPage'))
 const AdminDashboardPage = lazy(() => import('../admin/pages/AdminDashboardPage'))
 const AdminProfilePage = lazy(() => import('../admin/pages/AdminProfilePage'))
 const AdminProjectsPage = lazy(() => import('../admin/pages/AdminProjectsPage'))
+const AdminCompetenciesPage = lazy(() => import('../admin/pages/AdminCompetenciesPage'))
 const AdminSkillsPage = lazy(() => import('../admin/pages/AdminSkillsPage'))
 const AdminExperiencePage = lazy(() => import('../admin/pages/AdminExperiencePage'))
 const AdminEducationPage = lazy(() => import('../admin/pages/AdminEducationPage'))
@@ -88,6 +89,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<AdminFallback />}>
             <AdminProjectsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'competencies',
+        element: (
+          <Suspense fallback={<AdminFallback />}>
+            <AdminCompetenciesPage />
           </Suspense>
         ),
       },

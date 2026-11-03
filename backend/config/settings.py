@@ -12,14 +12,16 @@ from django.urls import reverse_lazy
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
-    DEBUG=(bool, False),
+    DEBUG=(bool, True),
     SECRET_KEY=(str, "django-insecure-fenil-rami-portfolio-dev-secret-key-1234567890"),
-    ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1", "testserver"]),
+    ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1", "0.0.0.0", "[::1]", "testserver"]),
     CORS_ALLOWED_ORIGINS=(
         list,
         [
             "http://localhost:5173",
             "http://127.0.0.1:5173",
+            "http://localhost:5174",
+            "http://127.0.0.1:5174",
             "http://localhost:3000",
             "http://127.0.0.1:3000",
         ],
@@ -29,6 +31,8 @@ env = environ.Env(
         [
             "http://localhost:5173",
             "http://127.0.0.1:5173",
+            "http://localhost:5174",
+            "http://127.0.0.1:5174",
             "http://localhost:3000",
             "http://127.0.0.1:3000",
         ],

@@ -24,7 +24,7 @@ def admin_user(db):
             "is_superuser": True,
         },
     )
-    user.set_password("Fenil123")
+    user.set_password("TestSuperUserPass123!")
     user.is_staff = True
     user.is_superuser = True
     user.save()
@@ -42,7 +42,7 @@ def admin_user(db):
 @pytest.fixture
 def auth_client(admin_user):
     client = APIClient()
-    res = client.post("/api/v1/admin/auth/login/", {"username": "Admin", "password": "Fenil123"})
+    res = client.post("/api/v1/admin/auth/login/", {"username": "Admin", "password": "TestSuperUserPass123!"})
     assert res.status_code == status.HTTP_200_OK
     token = res.data["token"]
     client.credentials(HTTP_AUTHORIZATION=f"Token {token}")
@@ -53,7 +53,7 @@ def auth_client(admin_user):
 class TestAdminAPI:
     def test_admin_login_success(self, db, admin_user):
         client = APIClient()
-        res = client.post("/api/v1/admin/auth/login/", {"username": "Admin", "password": "Fenil123"})
+        res = client.post("/api/v1/admin/auth/login/", {"username": "Admin", "password": "TestSuperUserPass123!"})
         assert res.status_code == status.HTTP_200_OK
         assert "token" in res.data
         assert res.data["user"]["username"] == "Admin"

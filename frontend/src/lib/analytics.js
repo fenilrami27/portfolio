@@ -22,10 +22,7 @@ export function trackEvent(name, data = {}) {
       window.plausible(name, { props: data })
     }
 
-    // 3. Fallback debug log in dev mode
-    if (import.meta.env.DEV) {
-      console.log(`[Analytics Event: ${name}]`, data)
-    }
+
   } catch {
     // Silent fail so analytics never interrupts user workflow
   }

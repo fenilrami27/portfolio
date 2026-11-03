@@ -19,6 +19,7 @@ from rest_framework.views import APIView
 from apps.api.serializers import (
     AchievementSerializer,
     CertificateSerializer,
+    CompetencySerializer,
     ContactSubmissionSerializer,
     EducationSerializer,
     ExperienceSerializer,
@@ -38,6 +39,7 @@ from apps.api.throttles import ContactDailyThrottle, ContactHourlyThrottle
 from apps.content.models import (
     Achievement,
     Certificate,
+    Competency,
     Education,
     Experience,
     FocusArea,
@@ -128,6 +130,7 @@ class PortfolioBundleView(APIView):
 
         stats = Stat.objects.filter(is_visible=True).order_by("order", "id")
         focus_areas = FocusArea.objects.filter(is_visible=True).order_by("order", "id")
+        competencies = Competency.objects.filter(is_visible=True).order_by("order", "id")
         skill_groups = SkillGroup.objects.prefetch_related("skills").order_by(
             "order", "id"
         )
@@ -159,6 +162,7 @@ class PortfolioBundleView(APIView):
             "settings": SiteSettingsSerializer(site_settings).data,
             "stats": StatSerializer(stats, many=True).data,
             "focus_areas": FocusAreaSerializer(focus_areas, many=True).data,
+            "competencies": CompetencySerializer(competencies, many=True).data,
             "skills": SkillGroupSerializer(skill_groups, many=True).data,
             "experience": ExperienceSerializer(experiences, many=True).data,
             "education": EducationSerializer(education, many=True).data,
@@ -312,6 +316,19 @@ class SkillsListView(APIView):
     def get(self, request):
         groups = SkillGroup.objects.prefetch_related("skills").order_by("order", "id")
         return Response(SkillGroupSerializer(groups, many=True).data)
+
+
+class CompetenciesListView(APIView):
+    permission_classes = [AllowAny]
+
+    @extend_schema(
+        summary="List core competencies",
+        responses={200: CompetencySerializer(many=True)},
+    )
+    def get(self, request):
+        items = Competency.objects.filter(is_visible=True).order_by("order", "id")
+        return Response(CompetencySerializer(items, many=True).data)
+
 
 
 class ExperienceListView(APIView):

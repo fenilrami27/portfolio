@@ -9,6 +9,7 @@ from rest_framework import serializers
 from apps.content.models import (
     Achievement,
     Certificate,
+    Competency,
     Education,
     Experience,
     Hackathon,
@@ -356,3 +357,19 @@ class AdminSiteSettingsSerializer(serializers.ModelSerializer):
 
     def get_og_image_url(self, obj):
         return obj.og_image.url if obj.og_image else None
+
+
+class AdminCompetencySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Competency
+        fields = [
+            "id",
+            "title",
+            "code",
+            "full_name",
+            "description",
+            "icon_key",
+            "order",
+            "is_visible",
+        ]
+

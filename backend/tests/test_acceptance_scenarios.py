@@ -28,7 +28,7 @@ class TestAcceptanceScenarios:
 
     def test_01_admin_login_as_fenil(self, client):
         User = get_user_model()
-        user = User.objects.create_superuser("fenil", "fenil@test.com", "FenilPortfolio2026!")
+        user = User.objects.create_superuser("fenil", "fenil@test.com", "TestSuperUserPass123!")
 
         client.force_login(user)
         res = client.get("/admin/")

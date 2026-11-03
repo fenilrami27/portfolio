@@ -1,1 +1,531 @@
-{"profile":{"name":"Fenil Rami","headline":"PYTHON BACKEND & FULL STACK DEVELOPER","statement":"Information Technology undergraduate and Python Developer Intern with hands-on experience building business web applications using Python, Django and React.","supportingLine":"Python Developer Intern at Vibe Tech Labs. I turn real business workflows (orders, approvals, production, invoicing) into clean, reliable software.","about":"Information Technology undergraduate and Python Developer Intern with hands-on experience building business web applications using Python, Django and React. Independently developed the frontend of a multi-company pharmaceutical ERP project and currently contributing to Django backend development for a university website. Familiar with REST APIs, role-based application workflows, database-driven features and collaborative software development. Seeking Python Backend / Full Stack Developer opportunities.","location":"Ahmedabad, Gujarat","email":"fenilrami1266@gmail.com","showEmail":true,"phone":"9978643380","showPhone":true,"photo":{"url":"/media/profiles/photos/profiles/photo-main_vZ5ldfK.jpg","width":682,"height":1024,"alt":"Fenil Rami - Python Backend & Full Stack Developer","srcset":null},"availability":{"status":"Open to work","roles":["Python Backend Developer","Django Developer","Full Stack Developer"],"note":"Available for Python Backend and Full Stack opportunities."},"roles":["Python Backend Developer","Django Developer","Full Stack Developer"],"socials":[{"platform":"LinkedIn","label":"LinkedIn","url":"https://www.linkedin.com/in/fenil-rami-67303938a","order":1},{"platform":"GitHub","label":"Interior Design Studio GitHub","url":"https://github.com/fenilrami27","order":2},{"platform":"Email","label":"Email Fenil Rami","url":"mailto:fenilrami1266@gmail.com","order":3}],"resumeUrl":"/api/v1/resume/"},"settings":{"siteTitle":"Fenil Rami | Portfolio","seoTitle":"Fenil Rami | Python Backend & Full Stack Developer","seoDescription":"Portfolio of Fenil Rami, Python Backend & Full Stack Developer building role-based business web apps with Django and React.","ogImage":null,"canonicalUrl":"","contactHeading":"Let's build something reliable.","contactText":"Open to Python Backend and Full Stack roles. The fastest way to reach me is email or LinkedIn.","footerText":"Python Backend & Full Stack Developer specializing in role-based business web applications with Django and React. Focused on clean database models, robust REST APIs, and crisp user interfaces.","currentlyBuildingTitle":"HR University Django Backend","currentlyBuildingText":"Building a robust backend with Django 5, Django REST Framework, and PostgreSQL. Spans 11 decoupled apps, 32 relational models, and 38 endpoints supporting dynamic campus admissions, event schedules, and placement statistics.","currentlyBuildingStatus":"In progress","experienceStartDate":"2026-06-01","analyticsId":""},"stats":[{"id":1,"label":"Projects showcased","value":null,"computedValue":3,"suffix":"","note":"","kind":"projects_count","order":1},{"id":2,"label":"Months experience","value":null,"computedValue":6,"suffix":"+","note":"","kind":"experience_months","order":2},{"id":3,"label":"Print production forms (BMR)","value":4,"computedValue":4,"suffix":"","note":"","kind":"manual","order":3},{"id":4,"label":"REST endpoints designed","value":38,"computedValue":38,"suffix":"","note":"","kind":"manual","order":4}],"focusAreas":[{"id":1,"title":"Role-based apps","description":"Admin, Manager, Store Manager, and employee workspaces with strict data isolation and permission controls built right into the schema and UI.","iconKey":"LuShieldCheck","order":1},{"id":2,"title":"Workflow systems","description":"End-to-end operational pipelines: order intake, raw material checks, QC/QA verifications, multi-stage production, packaging, dispatch, and billing.","iconKey":"LuGitFork","order":2},{"id":3,"title":"Print-ready documents","description":"Digital batch manufacturing records (BMR) and GST tax invoices that mirror physical master templates pixel-for-pixel and print cleanly to paper or PDF.","iconKey":"LuPrinter","order":3}],"skills":[{"group":"Programming","order":1,"items":[{"name":"Python","icon":"SiPython","level":null,"order":1},{"name":"JavaScript","icon":"SiJavascript","level":null,"order":2}]},{"group":"Backend","order":2,"items":[{"name":"Django","icon":"SiDjango","level":null,"order":1},{"name":"Django REST Framework","icon":"SiDjango","level":null,"order":2},{"name":"REST API development","icon":"TbApi","level":null,"order":3},{"name":"Authentication","icon":"LuKeyRound","level":null,"order":4},{"name":"CRUD","icon":"LuDatabase","level":null,"order":5}]},{"group":"Frontend","order":3,"items":[{"name":"React.js","icon":"SiReact","level":null,"order":1},{"name":"Redux","icon":"SiRedux","level":null,"order":2},{"name":"HTML5","icon":"SiHtml5","level":null,"order":3},{"name":"CSS3","icon":"SiCss","level":null,"order":4}]},{"group":"Databases","order":4,"items":[{"name":"PostgreSQL","icon":"SiPostgresql","level":null,"order":1},{"name":"SQLite","icon":"SiSqlite","level":null,"order":2}]},{"group":"Development","order":5,"items":[{"name":"Role-Based Access Control (RBAC)","icon":"LuShieldCheck","level":null,"order":1},{"name":"API Integration","icon":"LuWorkflow","level":null,"order":2},{"name":"Database Management","icon":"LuServer","level":null,"order":3}]}],"experience":[{"id":1,"company":"Vibe Tech Labs","role":"Python Developer Intern","location":"Ahmedabad","start":"Jun 2026","end":"Present","current":true,"bullets":["Developing business web applications using Python and Django, with hands-on work across backend functionality and frontend integration.","Independently built the complete React frontend for CMHP, a pharmaceutical ERP project; the project is currently in development and has not yet been handed over.","Working on the Django backend for an ongoing university website project, contributing to full-stack application development.","Worked with authentication, role-based access control, CRUD workflows, database models and REST API integration."],"order":1}],"education":[{"id":1,"institution":"Gandhinagar University","degree":"Bachelor of Information Technology","start":"2023","end":"2027","grade":"Latest SGPA: 8.77 / 10 (Semester 6)","order":1}],"journey":[{"id":1,"title":"Bachelor of Information Technology","description":"Enrolled in Bachelor of Information Technology, establishing fundamental knowledge in software engineering, data structures, algorithms, and database management. Latest SGPA: 8.77 / 10 (Semester 6).","period":"2023 - 2027","kind":"education","order":1},{"id":2,"title":"Interior Design Studio","description":"Developed a Django website with product and project showcase pages, user authentication, session handling, OTP-verified password recovery, and an admin-managed dynamic gallery.","period":"Project Milestone","kind":"project","order":2},{"id":3,"title":"Python Developer Intern","description":"Developing business web applications using Python and Django at Vibe Tech Labs, with hands-on work across backend functionality and frontend integration.","period":"Jun 2026 - Present","kind":"experience","order":3},{"id":4,"title":"CMHP Pharma ERP Frontend","description":"Independently built the entire React frontend for a two-company pharmaceutical ERP (CMHP Pharma & Tej Biocare), spanning workspaces, HRMS, multi-role orders, stock ledgers, BMR digital batch manufacturing records, QC/QA, and GST invoicing.","period":"Project Milestone","kind":"project","order":4},{"id":5,"title":"HR University Portal","description":"Constructed the interactive frontend with an animated intro, live counters, event directories, placement metrics, and admission workflows.","period":"Project Milestone","kind":"project","order":5},{"id":6,"title":"HR University Django Backend","description":"Architecting and implementing the Django 5 backend with Django REST Framework and PostgreSQL: 11 decoupled apps, 32 models, and 38 REST API endpoints for complete university data management.","period":"Now","kind":"milestone","order":6}],"leadership":[{"id":1,"title":"Cultural Head","organization":"Gandhinagar University","description":"Led university cultural events, coordinated student teams, delegated responsibilities, and worked with faculty and external vendors on budgets and schedules.","startLabel":"","endLabel":"","order":1},{"id":2,"title":"Arena Coordinator","organization":"University Tech Fest","description":"Coordinated arena activities, participant scheduling and on-ground operations with the organizing team.","startLabel":"","endLabel":"","order":2}],"certificates":[],"hackathons":[],"achievements":[],"testimonials":[],"projects":[{"id":1,"title":"CMHP Pharma ERP","slug":"cmhp-pharma-erp","oneLiner":"Multi-company enterprise pharmaceutical ERP frontend supporting dual-entity production, digital Batch Manufacturing Records (BMR), and automated inventory ledgers.","role":"Frontend Developer (Independent)","status":"In development (not yet handed over)","type":"Frontend","tier":"featured","stack":["CSS3","HTML5","JavaScript","React","Redux"],"liveUrl":"","githubUrl":"https://github.com/fenilrami27","videoUrl":"","cover":null,"isFeatured":true,"isPublished":true,"order":1},{"id":2,"title":"HR University","slug":"hr-university","oneLiner":"Comprehensive university web portal with interactive admissions workflows and modular Django 5 REST backend managing academic departments and events.","role":"Full Stack Developer (Frontend + Backend)","status":"In progress","type":"Full Stack","tier":"featured","stack":["CSS3","Django","HTML5","JavaScript","React"],"liveUrl":"","githubUrl":"https://github.com/fenilrami27","videoUrl":"","cover":null,"isFeatured":true,"isPublished":true,"order":2},{"id":3,"title":"Interior Design Studio","slug":"interior-design-studio","oneLiner":"A custom Django website featuring dynamic project galleries, client authentication, and OTP-verified password recovery.","role":"Django Developer","status":"Learning project","type":"Website","tier":"compact","stack":["CSS3","Django","HTML5","Python"],"liveUrl":"","githubUrl":"https://github.com/fenilrami27","videoUrl":"","cover":null,"isFeatured":false,"isPublished":true,"order":3}],"activeResumeUrl":"/api/v1/resume/"}
+{
+  "profile": {
+    "name": "Fenil Rami",
+    "headline": "Python Backend & Full Stack Developer (React & Django)",
+    "statement": "I build role-based business web applications and platforms with Django and React, from REST API design to production interfaces.",
+    "supportingLine": "Developer behind the CMHP multi-company pharmaceutical ERP and the HR University academic platform. Turning real-world operational workflows into clean, reliable software.",
+    "about": "I'm a final-year Information Technology student and Python Backend & Full Stack Developer. I independently architected and built the complete React frontend for CMHP Pharma ERP\u2014a multi-company pharmaceutical system covering HRMS, orders, dual-ledger inventory, digital BMR batch manufacturing records, and GST invoicing\u2014and engineered the modern web platform and Django REST backend for HR University. My focus is on turning real operational workflows into clean, role-isolated, and reliable software. Additional work includes an Interior Design Studio web portal with OTP authentication and client portfolios, alongside attendance and recruitment pipelines.",
+    "location": "Ahmedabad, Gujarat",
+    "email": "fenilrami1266@gmail.com",
+    "showEmail": true,
+    "phone": "+91 9978643380",
+    "showPhone": true,
+    "photo": {
+      "url": "/media/profiles/photos/profiles/photo-main_vZ5ldfK.jpg",
+      "width": 682,
+      "height": 1024,
+      "alt": "Fenil Rami - Python Backend & Full Stack Developer",
+      "srcset": null
+    },
+    "availability": {
+      "status": "Open to work",
+      "roles": [
+        "Python Backend Developer",
+        "Django Developer",
+        "Full Stack Developer"
+      ],
+      "note": "Available for Python Backend and Full Stack opportunities."
+    },
+    "roles": [
+      "Python Backend Developer",
+      "Django Developer",
+      "Full Stack Developer"
+    ],
+    "socials": [
+      {
+        "platform": "LinkedIn",
+        "label": "LinkedIn Profile",
+        "url": "https://www.linkedin.com/in/fenil-rami-67303938a",
+        "order": 1
+      },
+      {
+        "platform": "GitHub",
+        "label": "GitHub Profile",
+        "url": "https://github.com/fenilrami27",
+        "order": 2
+      },
+      {
+        "platform": "Email",
+        "label": "Email Fenil Rami",
+        "url": "mailto:fenilrami1266@gmail.com",
+        "order": 3
+      }
+    ],
+    "resumeUrl": "/api/v1/resume/"
+  },
+  "settings": {
+    "siteTitle": "Fenil Rami | Python Backend & Full Stack Developer",
+    "seoTitle": "Fenil Rami | Python Backend & Full Stack Developer (CMHP ERP, HR University)",
+    "seoDescription": "Portfolio of Fenil Rami, Python Backend & Full Stack Developer. Featured projects include CMHP Pharma ERP and HR University platform.",
+    "ogImage": null,
+    "canonicalUrl": "",
+    "contactHeading": "Let's build something reliable.",
+    "contactText": "Open to Python Backend and Full Stack developer opportunities. Direct phone: +91 9978643380. The fastest way to reach me is phone, email, or LinkedIn.",
+    "footerText": "Python Backend & Full Stack Developer specializing in role-based business web applications with Django and React. Creator of CMHP Pharma ERP and the HR University academic web platform.",
+    "currentlyBuildingTitle": "HR University Platform & Django Backend",
+    "currentlyBuildingText": "Engineering the production architecture with Django 5 and Django REST Framework, featuring 11 modular applications, 32 relational models, and 38 REST endpoints supporting dynamic admissions, event schedules, and placement pipelines.",
+    "currentlyBuildingStatus": "In progress",
+    "experienceStartDate": "2026-06-01",
+    "analyticsId": ""
+  },
+  "stats": [
+    {
+      "id": 1,
+      "label": "Projects showcased",
+      "value": null,
+      "computedValue": 3,
+      "suffix": "",
+      "note": "",
+      "kind": "projects_count",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "label": "Months experience",
+      "value": null,
+      "computedValue": 6,
+      "suffix": "+",
+      "note": "",
+      "kind": "experience_months",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "label": "Print production forms (BMR)",
+      "value": 4,
+      "computedValue": 4,
+      "suffix": "",
+      "note": "",
+      "kind": "manual",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "label": "REST endpoints designed",
+      "value": 38,
+      "computedValue": 38,
+      "suffix": "",
+      "note": "",
+      "kind": "manual",
+      "order": 4
+    }
+  ],
+  "focusAreas": [
+    {
+      "id": 1,
+      "title": "Role-based apps",
+      "description": "Admin, Manager, Store Manager, and employee workspaces with strict data isolation and permission controls built right into the schema and UI.",
+      "iconKey": "LuShieldCheck",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Workflow systems",
+      "description": "End-to-end operational pipelines: order intake, raw material checks, QC/QA verifications, multi-stage production, packaging, dispatch, and billing.",
+      "iconKey": "LuGitFork",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Print-ready documents",
+      "description": "Digital batch manufacturing records (BMR) and GST tax invoices that mirror physical master templates pixel-for-pixel and print cleanly to paper or PDF.",
+      "iconKey": "LuPrinter",
+      "order": 3
+    }
+  ],
+  "competencies": [
+    {
+      "id": 1,
+      "title": "Artificial Intelligence (AI)",
+      "code": "AI",
+      "fullName": "Artificial Intelligence",
+      "description": "Intelligent agent architectures, search heuristics, knowledge representation, and algorithmic reasoning systems.",
+      "iconKey": "LuBrain",
+      "order": 1,
+      "isVisible": true
+    },
+    {
+      "id": 2,
+      "title": "Advanced Machine Learning (AML)",
+      "code": "AML",
+      "fullName": "Advanced Machine Learning",
+      "description": "Deep neural network architectures, hyperparameter optimization, ensemble strategies, and advanced predictive pipelines.",
+      "iconKey": "LuCpu",
+      "order": 2,
+      "isVisible": true
+    },
+    {
+      "id": 3,
+      "title": "Machine Learning (ML)",
+      "code": "ML",
+      "fullName": "Machine Learning",
+      "description": "Supervised and unsupervised learning paradigms, feature engineering, regression, and classification pipelines.",
+      "iconKey": "LuBoxes",
+      "order": 3,
+      "isVisible": true
+    },
+    {
+      "id": 4,
+      "title": "Computer Vision",
+      "code": "Computer Vision",
+      "fullName": "Computer Vision",
+      "description": "Convolutional image processing, visual feature extraction, object detection, and spatial pattern classification.",
+      "iconKey": "LuEye",
+      "order": 4,
+      "isVisible": true
+    },
+    {
+      "id": 5,
+      "title": "Computer Networks (CN)",
+      "code": "CN",
+      "fullName": "Computer Networks",
+      "description": "Layered protocol stacks, TCP/IP communication, routing architectures, socket programming, and packet flow.",
+      "iconKey": "LuNetwork",
+      "order": 5,
+      "isVisible": true
+    },
+    {
+      "id": 6,
+      "title": "Team Leadership",
+      "code": "Team Leadership",
+      "fullName": "Team Leadership",
+      "description": "Cross-functional team alignment, code review stewardship, pair programming, and engineering mentorship.",
+      "iconKey": "LuUsers",
+      "order": 6,
+      "isVisible": true
+    },
+    {
+      "id": 7,
+      "title": "Project Management",
+      "code": "Project Management",
+      "fullName": "Project Management",
+      "description": "Agile sprint cycles, technical milestone scoping, backlog prioritization, and structured delivery schedules.",
+      "iconKey": "LuKanban",
+      "order": 7,
+      "isVisible": true
+    }
+  ],
+  "skills": [
+    {
+      "group": "Programming",
+      "order": 1,
+      "items": [
+        {
+          "name": "Python",
+          "icon": "SiPython",
+          "level": null,
+          "order": 1
+        },
+        {
+          "name": "JavaScript",
+          "icon": "SiJavascript",
+          "level": null,
+          "order": 2
+        }
+      ]
+    },
+    {
+      "group": "Backend",
+      "order": 2,
+      "items": [
+        {
+          "name": "Django",
+          "icon": "SiDjango",
+          "level": null,
+          "order": 1
+        },
+        {
+          "name": "Django REST Framework",
+          "icon": "SiDjango",
+          "level": null,
+          "order": 2
+        },
+        {
+          "name": "REST API development",
+          "icon": "TbApi",
+          "level": null,
+          "order": 3
+        },
+        {
+          "name": "Authentication",
+          "icon": "LuKeyRound",
+          "level": null,
+          "order": 4
+        },
+        {
+          "name": "CRUD",
+          "icon": "LuDatabase",
+          "level": null,
+          "order": 5
+        }
+      ]
+    },
+    {
+      "group": "Frontend",
+      "order": 3,
+      "items": [
+        {
+          "name": "React.js",
+          "icon": "SiReact",
+          "level": null,
+          "order": 1
+        },
+        {
+          "name": "Redux",
+          "icon": "SiRedux",
+          "level": null,
+          "order": 2
+        },
+        {
+          "name": "HTML5",
+          "icon": "SiHtml5",
+          "level": null,
+          "order": 3
+        },
+        {
+          "name": "CSS3",
+          "icon": "SiCss",
+          "level": null,
+          "order": 4
+        }
+      ]
+    },
+    {
+      "group": "Databases",
+      "order": 4,
+      "items": [
+        {
+          "name": "PostgreSQL",
+          "icon": "SiPostgresql",
+          "level": null,
+          "order": 1
+        },
+        {
+          "name": "SQLite",
+          "icon": "SiSqlite",
+          "level": null,
+          "order": 2
+        }
+      ]
+    },
+    {
+      "group": "Development",
+      "order": 5,
+      "items": [
+        {
+          "name": "Role-Based Access Control (RBAC)",
+          "icon": "LuShieldCheck",
+          "level": null,
+          "order": 1
+        },
+        {
+          "name": "API Integration",
+          "icon": "LuWorkflow",
+          "level": null,
+          "order": 2
+        },
+        {
+          "name": "Database Management",
+          "icon": "LuServer",
+          "level": null,
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "company": "Vibe Tech Labs",
+      "role": "Python Developer Intern",
+      "location": "Ahmedabad",
+      "start": "Jun 2026",
+      "end": "Present",
+      "current": true,
+      "bullets": [
+        "Developing business web applications using Python and Django, with hands-on work across backend functionality and frontend integration.",
+        "Independently built the complete React frontend for CMHP, a pharmaceutical ERP project; the project is currently in development and has not yet been handed over.",
+        "Working on the Django backend for an ongoing university website project, contributing to full-stack application development.",
+        "Worked with authentication, role-based access control, CRUD workflows, database models and REST API integration."
+      ],
+      "order": 1
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "institution": "Gandhinagar University",
+      "degree": "Bachelor of Information Technology",
+      "start": "2023",
+      "end": "2027",
+      "grade": "Latest SGPA: 8.77 / 10 (Semester 6)",
+      "order": 1
+    }
+  ],
+  "journey": [
+    {
+      "id": 1,
+      "title": "Bachelor of Information Technology",
+      "description": "Enrolled in Bachelor of Information Technology, establishing fundamental knowledge in software engineering, data structures, algorithms, and database management. Latest SGPA: 8.77 / 10 (Semester 6).",
+      "period": "2023 - 2027",
+      "kind": "education",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Interior Design Studio",
+      "description": "Developed a Django website with product and project showcase pages, user authentication, session handling, OTP-verified password recovery, and an admin-managed dynamic gallery.",
+      "period": "Project Milestone",
+      "kind": "project",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Python Developer Intern",
+      "description": "Developing business web applications using Python and Django at Vibe Tech Labs, with hands-on work across backend functionality and frontend integration.",
+      "period": "Jun 2026 - Present",
+      "kind": "experience",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "title": "CMHP Pharma ERP Frontend",
+      "description": "Independently built the entire React frontend for a two-company pharmaceutical ERP (CMHP Pharma & Tej Biocare), spanning workspaces, HRMS, multi-role orders, stock ledgers, BMR digital batch manufacturing records, QC/QA, and GST invoicing.",
+      "period": "Project Milestone",
+      "kind": "project",
+      "order": 4
+    },
+    {
+      "id": 5,
+      "title": "HR University Portal",
+      "description": "Constructed the interactive frontend with an animated intro, live counters, event directories, placement metrics, and admission workflows.",
+      "period": "Project Milestone",
+      "kind": "project",
+      "order": 5
+    },
+    {
+      "id": 6,
+      "title": "HR University Django Backend",
+      "description": "Architecting and implementing the Django 5 backend with Django REST Framework and PostgreSQL: 11 decoupled apps, 32 models, and 38 REST API endpoints for complete university data management.",
+      "period": "Now",
+      "kind": "milestone",
+      "order": 6
+    }
+  ],
+  "leadership": [
+    {
+      "id": 1,
+      "title": "Cultural Head",
+      "organization": "Gandhinagar University",
+      "description": "Led university cultural events, coordinated student teams, delegated responsibilities, and worked with faculty and external vendors on budgets and schedules.",
+      "startLabel": "",
+      "endLabel": "",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Arena Coordinator",
+      "organization": "University Tech Fest",
+      "description": "Coordinated arena activities, participant scheduling and on-ground operations with the organizing team.",
+      "startLabel": "",
+      "endLabel": "",
+      "order": 2
+    }
+  ],
+  "certificates": [],
+  "hackathons": [],
+  "achievements": [],
+  "testimonials": [],
+  "projects": [
+    {
+      "id": 1,
+      "title": "CMHP Pharma ERP",
+      "slug": "cmhp-pharma-erp",
+      "oneLiner": "A two-company pharmaceutical ERP: orders, inventory, production (BMR), QC/QA and GST invoicing in one role-based system.",
+      "role": "Frontend Developer (Independent)",
+      "status": "In development (not yet handed over)",
+      "type": "Frontend",
+      "tier": "featured",
+      "stack": [
+        "CSS3",
+        "HTML5",
+        "JavaScript",
+        "React",
+        "Redux"
+      ],
+      "liveUrl": "",
+      "githubUrl": "https://github.com/fenilrami27",
+      "videoUrl": "",
+      "cover": {
+        "url": "/media/projects/cmhp-pharma-erp/cover.webp",
+        "width": 1440,
+        "height": 900,
+        "alt": "CMHP Pharma ERP Company Dashboard",
+        "srcset": null
+      },
+      "isFeatured": true,
+      "isPublished": true,
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "HR University",
+      "slug": "hr-university",
+      "oneLiner": "A Gen-Z styled university portal with an animated intro, dynamic live counters, departments, placements, events, and an admission workflow; Django backend architecture.",
+      "role": "Frontend Developer; Django Backend Developer",
+      "status": "In progress",
+      "type": "Full Stack",
+      "tier": "featured",
+      "stack": [
+        "CSS3",
+        "Django",
+        "HTML5",
+        "JavaScript",
+        "React"
+      ],
+      "liveUrl": "",
+      "githubUrl": "https://github.com/fenilrami27",
+      "videoUrl": "",
+      "cover": {
+        "url": "/media/projects/hr-university/cover.webp",
+        "width": 1440,
+        "height": 900,
+        "alt": "HR University Campus Platform Hero View",
+        "srcset": null
+      },
+      "isFeatured": true,
+      "isPublished": true,
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Interior Design Studio",
+      "slug": "interior-design-studio",
+      "oneLiner": "A Django website with product and project showcases, login/signup, OTP password reset and an admin-managed gallery.",
+      "role": "Developer",
+      "status": "Learning project",
+      "type": "Website",
+      "tier": "compact",
+      "stack": [
+        "CSS3",
+        "Django",
+        "HTML5",
+        "Python"
+      ],
+      "liveUrl": "",
+      "githubUrl": "https://github.com/fenilrami27",
+      "videoUrl": "",
+      "cover": {
+        "url": "/media/projects/interior-design-studio/cover.webp",
+        "width": 1440,
+        "height": 900,
+        "alt": "Interior Design Studio Homepage",
+        "srcset": null
+      },
+      "isFeatured": false,
+      "isPublished": true,
+      "order": 3
+    }
+  ],
+  "activeResumeUrl": "/api/v1/resume/"
+}

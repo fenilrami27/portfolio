@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LuArrowUp } from 'react-icons/lu'
+import { LuArrowUp, LuMail, LuPhone } from 'react-icons/lu'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa6'
-import { LuMail } from 'react-icons/lu'
 import { Container } from '../ui/Container'
 import { IconButton } from '../ui/IconButton'
 import { useProfile, useSettings } from '../../hooks/usePortfolio'
@@ -18,6 +17,7 @@ export function Footer() {
 
   const currentYear = new Date().getFullYear()
 
+  const phone = profile?.phone || settings?.phone || '+91 9978643380'
   const email = profile?.email || 'fenilrami1266@gmail.com'
   const location = profile?.location || 'Ahmedabad, Gujarat, India'
   const githubUrl =
@@ -133,6 +133,17 @@ export function Footer() {
             </h3>
             <div className="space-y-2.5 text-sm text-text-muted">
               <p>{location}</p>
+              {phone && (
+                <p>
+                  <a
+                    href={`tel:${phone.replace(/\s+/g, '')}`}
+                    className="text-text hover:text-accent-1 dark:hover:text-accent-2 transition-colors font-medium inline-flex items-center gap-1.5"
+                  >
+                    <LuPhone className="w-3.5 h-3.5 text-accent-1 dark:text-accent-2" aria-hidden="true" />
+                    <span>{phone}</span>
+                  </a>
+                </p>
+              )}
               <p>
                 <a
                   href={`mailto:${email}`}

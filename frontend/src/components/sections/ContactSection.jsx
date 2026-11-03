@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { SiGithub } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa6'
-import { LuMail, LuSend, LuFileDown, LuCircleCheck, LuCircleAlert } from 'react-icons/lu'
+import { LuMail, LuSend, LuFileDown, LuCircleCheck, LuCircleAlert, LuPhone } from 'react-icons/lu'
 import { Section } from '../ui/Section'
 import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
@@ -166,10 +166,26 @@ export function ContactSection({ profile = {}, settings = {} }) {
             <h3 className="text-xl font-bold text-text mb-3">Direct channels</h3>
             <p className="text-sm text-text-muted leading-relaxed mb-6">
               Whether you are discussing an open backend role, reviewing my pharmaceutical ERP
-              codebase, or planning full-stack development, feel free to connect directly.
+              codebase, university web platforms, or planning full-stack development, feel free to connect directly.
             </p>
 
             <div className="space-y-4">
+              {profile.phone && profile.show_phone !== false && (
+                <a
+                  href={`tel:${profile.phone.replace(/\s+/g, '')}`}
+                  className="flex items-center gap-3 p-3.5 rounded-xl bg-surface-2 border border-border/80 text-text hover:border-accent-1/50 transition-colors group"
+                  aria-label={`Call ${profile.phone}`}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-accent-1 dark:text-accent-2 group-hover:scale-105 transition-transform">
+                    <LuPhone className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs uppercase font-mono text-text-subtle">Call directly</p>
+                    <p className="text-sm font-semibold truncate">{profile.phone}</p>
+                  </div>
+                </a>
+              )}
+
               <a
                 href={`mailto:${profile.email}`}
                 className="flex items-center gap-3 p-3.5 rounded-xl bg-surface-2 border border-border/80 text-text hover:border-accent-1/50 transition-colors group"
